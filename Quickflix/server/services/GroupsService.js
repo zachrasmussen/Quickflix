@@ -10,6 +10,8 @@ class GroupsService {
       throw new Forbidden('Not Your Group')
     }
     group.name = groupData.name || group.name
+    await group.save()
+    return group
   }
   async deleteGroup(groupId, userId) {
     const group = await dbContext.Groups.findById(groupId)
