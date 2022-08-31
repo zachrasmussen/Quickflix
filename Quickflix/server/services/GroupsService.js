@@ -4,6 +4,13 @@ import { dbContext } from "../db/DbContext"
 
 
 class GroupsService {
+  async editGroup(groupData, id, userId) {
+    const group = await this.getGroupById(id)
+    if (group.creatorId != userId) {
+      throw new Forbidden('Not Your Group')
+    }
+    group.name = groupData.name || group.name
+  }
   async deleteGroup(groupId, userId) {
     const group = await dbContext.Groups.findById(groupId)
     if (!group) {
@@ -14,13 +21,11 @@ class GroupsService {
     await group.remove()
     return 'group was deleted'
   }
-
   async create(newGroup) {
     const group = await dbContext.Groups.create(newGroup)
     await group.populate('creator', 'name picture')
     return group
   }
-
   async getGroupById(id) {
     const group = await dbContext.Groups.findById(id).populate('creator', 'name picture')
     if (!group) {
@@ -28,8 +33,6 @@ class GroupsService {
     }
     return group
   }
-
-
 }
 
 export const groupsService = new GroupsService()
