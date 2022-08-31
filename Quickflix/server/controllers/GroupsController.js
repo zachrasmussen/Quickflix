@@ -1,3 +1,4 @@
+import { Auth0Provider } from "@bcwdev/auth0provider";
 import { groupsService } from "../services/GroupsService";
 import BaseController from "../utils/BaseController";
 
@@ -7,8 +8,9 @@ export class GroupsController extends BaseController {
   constructor() {
     super('api/groups')
     this.router
-      .post('', this.create)
       .get('/:id', this.getGroupById)
+      .use(Auth0Provider.getAuthorizedUserInfo)
+      .post('', this.create)
   }
   async getGroupById(req, res, next) {
     try {
@@ -20,7 +22,7 @@ export class GroupsController extends BaseController {
   }
   async create(req, res, next) {
     try {
-      req.body.creatorId = req.account.id
+      req.body.creatorId = req.userInfo.id
       const group = await groupsService.create(req.body)
       return res.send(group)
     } catch (error) {
