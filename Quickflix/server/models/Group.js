@@ -12,7 +12,7 @@ export const GroupSchema = new Schema({
 
 GroupSchema.virtual('creator', {
   localField: 'creatorId',
-  foreignField: ' _id',
+  foreignField: '_id',
   justOne: true,
   ref: 'Account'
 })
