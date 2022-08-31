@@ -11,7 +11,7 @@ export class GroupsController extends BaseController{
   }
   async create(req,res,next) {
     try {
-    req.body.creatorId = req.userInfo.id
+    req.body.creatorId = req.account.id
     const group = await groupsService.create(req.body)
       return res.send(group)
     } catch (error) {
@@ -19,3 +19,5 @@ export class GroupsController extends BaseController{
     }
   }
 }
+
+

@@ -3,9 +3,8 @@ import { dbContext } from "../db/DbContext"
 
 class GroupsService {
 
-async create(body){
-  const group = await dbContext.Groups.create(body)
-  // @ts-ignore
+async create(newGroup){
+  const group = await dbContext.Groups.create(newGroup)
   await group.populate('creator', 'name picture')
   return group
 }
