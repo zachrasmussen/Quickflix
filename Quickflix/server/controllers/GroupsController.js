@@ -11,6 +11,15 @@ export class GroupsController extends BaseController {
       .get('/:id', this.getGroupById)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.create)
+      .delete('/:id', this.deleteGroup)
+  }
+  async deleteGroup(req, res, next) {
+    try {
+      const group = await groupsService.deleteGroup(req.params.id, req.userInfo.id)
+      return res.send(group)
+    } catch (error) {
+      next(error)
+    }
   }
   async getGroupById(req, res, next) {
     try {

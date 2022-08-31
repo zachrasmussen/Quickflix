@@ -1,9 +1,19 @@
-import { BadRequest } from "@bcwdev/auth0provider/lib/Errors"
+import { BadRequest, Forbidden } from "@bcwdev/auth0provider/lib/Errors"
 import { request } from "express"
 import { dbContext } from "../db/DbContext"
 
 
 class GroupsService {
+  async deleteGroup(groupId, userId) {
+    const group = await dbContext.Groups.findById(groupId)
+    if (!group) {
+      throw new BadRequest('No Group')
+    }
+    if (group.creatorId != userId)
+      throw new Forbidden('Not Your Group!')
+    await group.remove()
+    return 'group was deleted'
+  }
 
   async create(newGroup) {
     const group = await dbContext.Groups.create(newGroup)
