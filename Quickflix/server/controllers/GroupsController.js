@@ -1,4 +1,5 @@
 import { Auth0Provider } from "@bcwdev/auth0provider";
+import { contentService } from "../services/ContentsService";
 import { groupsService } from "../services/GroupsService";
 import BaseController from "../utils/BaseController";
 
@@ -10,13 +11,18 @@ export class GroupsController extends BaseController {
     this.router
       .get('/:id', this.getGroupById)
       .use(Auth0Provider.getAuthorizedUserInfo)
-      .get('/content', this.getContentByGroupId)
+      .get('/:id/content', this.getContentByGroupId)
       .post('', this.create)
       .delete('/:id', this.deleteGroup)
       .put('/:id', this.editGroup)
   }
-  async getContentByGroupId() {
-
+  async getContentByGroupId(req, res, next) {
+    try {
+      const content = await contentService.getContentById(req.params.groupId)
+      return res.send(content)
+    } catch (error) {
+      next(error)
+    }
   }
   async editGroup(req, res, next) {
     try {
