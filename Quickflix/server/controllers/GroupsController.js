@@ -11,7 +11,7 @@ export class GroupsController extends BaseController {
     this.router
       .get('/:id', this.getGroupById)
       .use(Auth0Provider.getAuthorizedUserInfo)
-      .get('/:id/content', this.getContentByGroupId)
+      .get('/groupId/content', this.getContentByGroupId)
       .post('', this.create)
       .delete('/:id', this.deleteGroup)
       .put('/:id', this.editGroup)
