@@ -14,10 +14,11 @@ class GroupMembersService {
         const group = await groupsService.getGroupById(member.groupId)
         if (group.creatorId != userId) {
             if (member.accountId != userId) {
-                await member.remove()
-                return 'Member Removed'
+                throw new BadRequest('no')
             }
         }
+        await member.remove()
+        return 'Member Removed'
 
     }
     async becomeMember(newMember) {
