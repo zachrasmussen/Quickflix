@@ -1,4 +1,5 @@
 import { Auth0Provider } from "@bcwdev/auth0provider";
+import { contentService } from "../services/ContentsService";
 import BaseController from "../utils/BaseController";
 
 export class ContentsController extends BaseController {
@@ -7,14 +8,34 @@ export class ContentsController extends BaseController {
         this.router
         .use(Auth0Provider.getAuthorizedUserInfo)
         .post('', this.create)
+        .get('/:id', this.getContentByCreatorId)
+        .delete('/:id', this.archive)
     }
-
-async create (req, res, next) {
-    try {
-        req.body.accountId = req.userInfo.id 
-      return res.send()
-    } catch (error) {
-      next(error)
+    
+    async create (req, res, next) {
+      try {
+        req.body.creatorId = req.userInfo.id 
+        let newContent=  await contentService.create(req.body)//body on request coming into server
+        return res.send(newContent)
+      } catch (error) {
+        next(error)
+      }
     }
-}
+    async getContentByCreatorId(req, res, next) {
+      try {
+        const content = await contentService.getContentByCreatorId(req.params.id)
+        return res.send(content)
+      } catch (error) {
+        next(error)
+        
+      }
+    }
+    async archive(req, res, next) {//TODO Hard delete
+      try {
+        const message = await contentService.archive(req.params.id, req.userInfo.id)
+        return res.send(message)
+      } catch (error) {
+        next(error)
+      }
+    }
 }
