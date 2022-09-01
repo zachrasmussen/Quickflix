@@ -10,9 +10,13 @@ export class GroupsController extends BaseController {
     this.router
       .get('/:id', this.getGroupById)
       .use(Auth0Provider.getAuthorizedUserInfo)
+      .get('/content', this.getContentByGroupId)
       .post('', this.create)
       .delete('/:id', this.deleteGroup)
       .put('/:id', this.editGroup)
+  }
+  async getContentByGroupId() {
+
   }
   async editGroup(req, res, next) {
     try {

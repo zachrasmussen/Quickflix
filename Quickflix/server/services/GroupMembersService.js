@@ -19,7 +19,6 @@ class GroupMembersService {
         }
         await member.remove()
         return 'Member Removed'
-
     }
     async becomeMember(newMember) {
         const group = await groupsService.getGroupById(newMember.groupId)
