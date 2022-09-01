@@ -23,7 +23,7 @@ export class ContentsController extends BaseController {
     }
     async getContentByCreatorId(req, res, next) {
       try {
-        const content = await contentService.getContentByCreatorId(req.params.id)
+        const content = await contentService.getContentById(req.params.id)
         return res.send(content)
       } catch (error) {
         next(error)
