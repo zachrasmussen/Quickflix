@@ -3,6 +3,10 @@ import { dbContext } from "../db/DbContext"
 
 
 class GroupsService {
+  async getYourGroups(accountId) {
+    const groups = await dbContext.Groups.find({ accountId: accountId }).populate('group')
+    return groups
+  }
   async editGroup(groupData, id, userId) {
     const group = await this.getGroupById(id)
     if (group.creatorId != userId) {
