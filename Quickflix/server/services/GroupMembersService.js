@@ -6,6 +6,11 @@ import { groupsService } from "./GroupsService"
 
 
 class GroupMembersService {
+
+    async getGroupMembersByGroupId(groupId) {
+        const groupMembers = await dbContext.GroupMembers.find(groupId)
+        return groupMembers
+    }
     async removeMember(memberId, userId) {
         const member = await dbContext.GroupMembers.findById(memberId)
         if (!member) {

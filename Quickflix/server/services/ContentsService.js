@@ -3,7 +3,8 @@ import { logger } from "../utils/Logger.js"
 import { Forbidden } from "../utils/Errors.js"
 
 class ContentsService {
-    getContentByGroupId(groupId) {
+
+    async getContentByGroupId(groupId) {
         const contents = dbContext.Content.find({ groupId }).populate('creator', 'name picture')
         return contents
     }

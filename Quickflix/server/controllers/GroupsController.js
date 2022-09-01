@@ -1,5 +1,6 @@
 import { Auth0Provider } from "@bcwdev/auth0provider";
 import { contentService } from "../services/ContentsService";
+import { groupMembersService } from "../services/GroupMembersService";
 import { groupsService } from "../services/GroupsService";
 import BaseController from "../utils/BaseController";
 
@@ -15,7 +16,17 @@ export class GroupsController extends BaseController {
       .post('', this.create)
       .delete('/:id', this.deleteGroup)
       .put('/:id', this.editGroup)
+      .get('/:groupId/groupMembers', this.getGroupMembersByGroupId)
   }
+  async getGroupMembersByGroupId(req, res, next) {
+    try {
+      const groupMembers = await groupMembersService.getGroupMembersByGroupId(req.params.groupId)
+      return res.send(groupMembers)
+    } catch (error) {
+      next(error)
+    }
+  }
+  // NOTE We may or may not need this later on
   async getContentByGroupId(req, res, next) {
     try {
       const content = await contentService.getContentByGroupId(req.params.groupId)
