@@ -10,6 +10,18 @@ export class ContentsController extends BaseController {
         .post('', this.create)
         .get('/:id', this.getContentByCreatorId)
         .delete('/:id', this.archive)
+        .put('/:id', this.editContent)
+    }
+
+    async editContent(req, res, next){
+      try {
+        req.body.creatorId = req.userInfo.id 
+        let contentData = req.body
+        let content = await contentService.editContentById(req.params.id, contentData)
+        return res.send(content)
+      } catch (error) {
+        next(error)
+      }
     }
     
     async create (req, res, next) {

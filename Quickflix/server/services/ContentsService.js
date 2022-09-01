@@ -13,6 +13,15 @@ class ContentsService {
         return content
     
     }
+
+    async editContentById(contentId, contentData){
+        let content = await this.getContentById(contentId)
+        // @ts-ignore
+        content.haveWatched = contentData.haveWatched 
+        // @ts-ignore
+        await content.save
+        return content
+    }
     async archive(contentId, userId) {       //TODO Hard delete
         const content = await this.getContentById(contentId)
         // @ts-ignore
