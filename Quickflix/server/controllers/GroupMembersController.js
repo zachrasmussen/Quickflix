@@ -10,7 +10,16 @@ export class GroupMembersController extends BaseController {
         this.router
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.becomeMember)
+            .delete('/:id', this.removeMember)
 
+    }
+    async removeMember(req, res, next) {
+        try {
+            const member = await groupMembersService.removeMember(req.params.id, req.userInfo.id)
+            return res.send(member)
+        } catch (error) {
+            next(error)
+        }
     }
     async becomeMember(req, res, next) {
         try {
