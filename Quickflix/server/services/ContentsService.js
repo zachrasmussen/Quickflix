@@ -12,8 +12,8 @@ class ContentsService {
     
     }
     async archive(contentId, UserId) {       //TODO Hard delete
-      }
-      
+    }
+    
     
 }
 
