@@ -8,19 +8,9 @@ export class ContentsController extends BaseController {
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.create)
-      .get('/:groupId', this.getContentByGroupId)
       .get('/:id', this.getContentByCreatorId)
       .delete('/:id', this.archive)
       .put('/:id', this.editContent)
-  }
-
-  async getContentByGroupId(req, res, next) {
-    try {
-      const content = await contentService.getContentById(req.params.groupId)
-      return res.send(content)
-    } catch (error) {
-      next(error)
-    }
   }
 
   async editContent(req, res, next) {
