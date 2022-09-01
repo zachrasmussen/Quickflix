@@ -11,19 +11,11 @@ export class GroupsController extends BaseController {
     this.router
       .get('/:id', this.getGroupById)
       .use(Auth0Provider.getAuthorizedUserInfo)
-      .get('/:groupId/content', this.getContentByGroupId)
       .post('', this.create)
       .delete('/:id', this.deleteGroup)
       .put('/:id', this.editGroup)
   }
-  async getContentByGroupId(req, res, next) {
-    try {
-      const content = await contentService.getContentById(req.params.groupId)
-      return res.send(content)
-    } catch (error) {
-      next(error)
-    }
-  }
+
   async editGroup(req, res, next) {
     try {
       const groupData = req.body
