@@ -19,7 +19,7 @@ export const ottApi = Axios.create({
     page: '2 ',
   },
   headers: {
-    'X-RapidAPI-Key': '8d7fde662cmshba23e9a52112375p19756ajsndc69e7d28c62',
+    'X-RapidAPI-Key': '91e8b1a45cmsh48ba9db00bf0194p1718f6jsn684843c31d65',
     'X-RapidAPI-Host': 'ott-details.p.rapidapi.com'
   }
 });
