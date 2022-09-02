@@ -16,7 +16,6 @@ class ContentsService {
         const content = await dbContext.Content.create(newContent)
         // await content.populate('creator', 'name picture')
         return content
-
     }
 
     async editContentById(contentId, contentData) {
