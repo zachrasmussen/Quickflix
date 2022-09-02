@@ -6,6 +6,10 @@
      </div> -->
     <h3 class="text-center" >{{content.title}}</h3>
      <img :src="content.imageurl" alt="">
+     <div class="d-flex justify-content-around">
+        <h1 class="mdi mdi-thumb-down selectable"></h1>
+        <h1 class="mdi mdi-thumb-up selectable"></h1>
+     </div>
      
     </div>
   </div>
