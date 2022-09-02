@@ -1,82 +1,85 @@
 <template>
   <div class="container-fluid" v-if="content">
     <div class="row">
-     <!-- <div class="col-md-4" v-for="c in content" :key="c.id">
+      <!-- <div class="col-md-4" v-for="c in content" :key="c.id">
       <ContentCard :content="c"/>
      </div> -->
-    <h3 class="text-center" >{{content.title}}</h3>
-     <img v-if="content.imageurl" :src="enhance(content.imageurl[0], 3)" alt="">
-     <div class="d-flex justify-content-around">
+
+      <img
+        v-if="content.imageurl"
+        :src="enhance(content.imageurl[0], 3)"
+        alt=""
+      />
+      <h3 class="text-center">{{ content.title }}</h3>
+      <div class="d-flex justify-content-around">
         <h1 class="mdi mdi-thumb-down selectable"></h1>
         <h1 class="mdi mdi-thumb-up selectable"></h1>
-     </div>
-     
-     
+      </div>
     </div>
   </div>
-  </template>
+</template>
   
   <script>
-  import { computed, onMounted } from '@vue/runtime-core';
-  import { contentService } from '../services/ContentService.js'
-  import { logger } from '../utils/Logger.js';
-  import Pop from '../utils/Pop.js';
-  import { AppState } from '../AppState.js';
-  import ContentCard from '../components/ContentCard.vue';
-  export default {
-      setup() {
-          async function getContent() {
-              try {
-                  await contentService.getContent();
-              }
-              catch (error) {
-                  logger.error("[Getting Movies]", error);
-                  Pop.error(error);
-              }
-          }
-          onMounted(() => {
-              getContent();
-          });
-          return {
-              content: computed(() => AppState.contents[0]),
-              enhance(url, factor = 2){
-                let ux = url.indexOf('UX') != -1 ? url.indexOf('UX') : url.indexOf('UY')
-                logger.log(ux)
-                let front = url.slice(0, ux+2)
-                let dataStr = url.slice(ux+2, url.indexOf('_AL.jpg')-7)
-                logger.log('front', front)
-                logger.log('data', dataStr)
-                let data = dataStr.split(/_|,/g)
-                logger.log(data)
-                Math.round(data[0] = parseInt(data[0]) *factor)
-                Math.round(data[3] = parseInt(data[3]) *factor)
-                Math.round(data[4] = parseInt(data[4]) *factor)
-                logger.warn(front + data.join(',').replace(',', '_') + '_AL_.jpg')
-                return front + data.join(',').replace(',', '_') + '_AL_.jpg'
-              }
-          };
-      },
-      components: { ContentCard }
-  }
+import { computed, onMounted } from '@vue/runtime-core';
+import { contentService } from '../services/ContentService.js'
+import { logger } from '../utils/Logger.js';
+import Pop from '../utils/Pop.js';
+import { AppState } from '../AppState.js';
+import ContentCard from '../components/ContentCard.vue';
+export default {
+  setup() {
+    async function getContent() {
+      try {
+        await contentService.getContent();
+      }
+      catch (error) {
+        logger.error("[Getting Movies]", error);
+        Pop.error(error);
+      }
+    }
+    onMounted(() => {
+      getContent();
+    });
+    return {
+      content: computed(() => AppState.contents[0]),
+      enhance(url, factor = 2) {
+        let ux = url.indexOf('UX') != -1 ? url.indexOf('UX') : url.indexOf('UY')
+        logger.log(ux)
+        let front = url.slice(0, ux + 2)
+        let dataStr = url.slice(ux + 2, url.indexOf('_AL.jpg') - 7)
+        logger.log('front', front)
+        logger.log('data', dataStr)
+        let data = dataStr.split(/_|,/g)
+        logger.log(data)
+        Math.round(data[0] = parseInt(data[0]) * factor)
+        Math.round(data[3] = parseInt(data[3]) * factor)
+        Math.round(data[4] = parseInt(data[4]) * factor)
+        logger.warn(front + data.join(',').replace(',', '_') + '_AL_.jpg')
+        return front + data.join(',').replace(',', '_') + '_AL_.jpg'
+      }
+    };
+  },
+  components: { ContentCard }
+}
   </script>
   
   <style scoped lang="scss">
-  .home{
-    display: grid;
-    height: 80vh;
-    place-content: center;
-    text-align: center;
-    user-select: none;
-    .home-card{
-      width: 50vw;
-      > img{
-        height: 200px;
-        max-width: 200px;
-        width: 100%;
-        object-fit: contain;
-        object-position: center;
-      }
+.home {
+  display: grid;
+  height: 80vh;
+  place-content: center;
+  text-align: center;
+  user-select: none;
+  .home-card {
+    width: 50vw;
+    > img {
+      height: 200px;
+      max-width: 200px;
+      width: 100%;
+      object-fit: contain;
+      object-position: center;
     }
   }
-  </style>
+}
+</style>
   
