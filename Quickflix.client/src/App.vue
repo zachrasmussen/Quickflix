@@ -2,14 +2,9 @@
   <header>
     <Navbar />
   </header>
-  <main>
+  <main class="bg-white">
     <router-view />
   </main>
-  <footer>
-    <div class="bg-white text-light text-center p-4">
-      
-    </div>
-  </footer>
 </template>
 
 <script>
