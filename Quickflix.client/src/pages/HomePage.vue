@@ -5,11 +5,12 @@
       <ContentCard :content="c"/>
      </div> -->
     <h3 class="text-center" >{{content.title}}</h3>
-     <img v-if="content.imageurl" :src="enhance(content.imageurl[1], 3)" alt="">
+     <img v-if="content.imageurl" :src="enhance(content.imageurl[0], 3)" alt="">
      <div class="d-flex justify-content-around">
         <h1 class="mdi mdi-thumb-down selectable"></h1>
         <h1 class="mdi mdi-thumb-up selectable"></h1>
      </div>
+     
      
     </div>
   </div>
@@ -37,7 +38,7 @@
               getContent();
           });
           return {
-              content: computed(() => AppState.contents[10]),
+              content: computed(() => AppState.contents[0]),
               enhance(url, factor = 2){
                 let ux = url.indexOf('UX') != -1 ? url.indexOf('UX') : url.indexOf('UY')
                 logger.log(ux)
