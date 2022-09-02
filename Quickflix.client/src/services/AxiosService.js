@@ -12,11 +12,11 @@ export const ottApi = Axios.create({
     end_year: '2020',
     min_imdb: '6',
     max_imdb: '10',
-    genre: 'comedy',
+    // genre: 'comedy',
     language: 'english',
     type: 'movie',
     sort: 'latest',
-    page: '2 ',
+    page: '1',
   },
   headers: {
     'X-RapidAPI-Key': '91e8b1a45cmsh48ba9db00bf0194p1718f6jsn684843c31d65',
