@@ -6,12 +6,13 @@
      </div> -->
 
       <img
+        class="p-0"
         v-if="content.imageurl"
         :src="enhance(content.imageurl[0], 3)"
         alt=""
       />
-      <h3 class="text-center">{{ content.title }}</h3>
-      <div class="d-flex justify-content-around">
+      <h3 class="text-center my-2">{{ content.title }}</h3>
+      <div class="d-flex justify-content-between mt-5">
         <h1 class="mdi mdi-thumb-down selectable"></h1>
         <h1 class="mdi mdi-thumb-up selectable"></h1>
       </div>
