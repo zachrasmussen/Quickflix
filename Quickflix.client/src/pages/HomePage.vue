@@ -11,7 +11,7 @@
         :src="enhance(content.imageurl[0], 3)"
         alt=""
       />
-      <h3 class="text-center my-2">{{ content.title }}</h3>
+      <h3 class="title-font text-center my-2">{{ content.title }}</h3>
       <div class="d-flex justify-content-between mt-5">
         <h1 class="bg-danger rounded-circle p-4">👎🏼</h1>
         <h1 class="bg-success rounded-circle p-4">👍🏼</h1>
@@ -81,6 +81,10 @@ export default {
       object-position: center;
     }
   }
+}
+
+.title-font {
+  font-family: "Montserrat", sans-serif;
 }
 </style>
   
