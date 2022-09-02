@@ -4,11 +4,11 @@ import { ottApi } from "./AxiosService.js"
 
 
 class ContentService {
-    async getContent() {
-        const res = await ottApi.get('')
-        logger.log('Getting movies', res.data)
-        AppState.content = res.data.results
-    }
+        async getContent() {
+                const res = await ottApi.get('')
+                logger.log('Getting movies', res.data)
+                AppState.content = res.data.results
+        }
 }
 
 
