@@ -10,7 +10,7 @@ class ContentService {
     async getContent() {
         const res = await ottApi.get('')
         logger.log('Getting movies', res.data)
-        AppState.content = res.data.results
+        AppState.contents = res.data.results
 
 
     }

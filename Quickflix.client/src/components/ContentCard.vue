@@ -15,18 +15,18 @@
   </template>
   
   <script>
-  import { AppState } from '../AppState.js'
+ 
   export default {
       props: {
           content: { type: Object, required: true}
       },
-      setup(props) {
+      setup() {
   
       return {
   
-          setActiveMovie() {
-              AppState.activeContent = props.content
-          }
+        //   setActiveContent() {
+        //       AppState.activeContent = props.content
+        //   }
       }
       }
   }

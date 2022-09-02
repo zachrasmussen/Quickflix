@@ -1,9 +1,12 @@
 <template>
   <div class="container-fluid">
-    <div class="row" v-for="c in content" :key="c.id">
-     <div class="col-md-4">
-      <ContentCard :content="c" />
-     </div>
+    <div class="row">
+     <!-- <div class="col-md-4" v-for="c in content" :key="c.id">
+      <ContentCard :content="c"/>
+     </div> -->
+    <h3>{{content.title}}</h3>
+     <img :src="content.imageurl" alt="">
+     
     </div>
   </div>
   </template>
@@ -30,7 +33,7 @@
               getContent();
           });
           return {
-              content: computed(() => AppState.content)
+              content: computed(() => AppState.contents[1])
           };
       },
       components: { ContentCard }
