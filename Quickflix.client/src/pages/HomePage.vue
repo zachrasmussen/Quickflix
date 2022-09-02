@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid" v-if="content">
     <div class="row">
      <!-- <div class="col-md-4" v-for="c in content" :key="c.id">
       <ContentCard :content="c"/>
