@@ -4,7 +4,7 @@
      <!-- <div class="col-md-4" v-for="c in content" :key="c.id">
       <ContentCard :content="c"/>
      </div> -->
-    <h3>{{content.title}}</h3>
+    <h3 class="text-center" >{{content.title}}</h3>
      <img :src="content.imageurl" alt="">
      
     </div>
