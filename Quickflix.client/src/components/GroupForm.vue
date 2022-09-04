@@ -7,20 +7,20 @@
                 <form @submit.prevent = "handleSubmit">
                     <div class="form-group">
                         <label for="groupName">Enter the name of your group</label>
-                        <input type="text" v-model="editable.groupName" class="form-control" id="groupName" aria-describedby="groupName" placeholder="Group Name"> 
+                        <input type="text" v-model="editable.name" class="form-control" id="groupName" aria-describedby="groupName" placeholder="Group Name"> 
                         <button class="btn btn-success">Create Group</button>              
                     </div>
                 </form>      
             </div>
         </div>
     </div>
-
 </template>
 
 <script>
 import { ref } from 'vue';
 import { logger } from '../utils/Logger';
 import Pop from '../utils/Pop';
+import { groupsService } from '../services/GroupsService.js';
 
 export default {
     setup() {

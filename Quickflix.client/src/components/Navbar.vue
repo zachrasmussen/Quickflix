@@ -30,14 +30,24 @@
       <!-- LOGIN COMPONENT HERE -->
       <Login />
     </div>
-    <div>
-      <!-- icon for creating group -->
-      <!-- <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#create-group">
-        Create Album
-      </button> -->
+    <div>      
       <i class="mdi mdi-plus-circle-outline m-3" data-bs-toggle="modal" data-bs-target="#create-group"></i>
-      <i class="mdi mdi-dots-horizontal" ></i>
+    </div>  
+    <div class="dropdown show">
+      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-toggle="dropdown">
+        Go To
+      </a>
+
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+      </div>
     </div>
+    
+      
+     
+    
   </nav>
 </template>
 
