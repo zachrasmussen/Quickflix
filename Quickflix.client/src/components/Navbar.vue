@@ -31,7 +31,12 @@
       <Login />
     </div>
     <div>
-      <i class="mdi mdi-dots-horizontal"></i>
+      <!-- icon for creating group -->
+      <!-- <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#create-group">
+        Create Album
+      </button> -->
+      <i class="mdi mdi-plus-circle-outline m-3" data-bs-toggle="modal" data-bs-target="#create-group"></i>
+      <i class="mdi mdi-dots-horizontal" ></i>
     </div>
   </nav>
 </template>
