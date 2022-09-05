@@ -27,7 +27,14 @@ const routes = [
     name: 'MyGroups',
     component: loadPage('MyGroupsPage'),
     beforeEnter: authGuard
+  },
+  {
+    path: '/activegroup/:groupId',
+    name: 'ActiveGroup',
+    component: loadPage('ActiveGroupPage'),
+    beforeEnter: authGuard
   }
+
 ]
 
 export const router = createRouter({

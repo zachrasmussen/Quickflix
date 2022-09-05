@@ -7,9 +7,7 @@ class GroupsService {
         const res = await api.post('api/groups', newGroup)
         logger.log('creating group from service', res.data) 
         AppState.groups.push(res.data)
-    }
-
-    
+    }    
 }
 
 export const groupsService = new GroupsService()
