@@ -5,10 +5,10 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">    
                 <form @submit.prevent = "handleSubmit">
-                    <div class="form-group">
-                        <label for="groupName">Enter the name of your group</label>
-                        <input type="text" v-model="editable.name" class="form-control" id="groupName" aria-describedby="groupName" placeholder="Group Name"> 
-                        <button class="btn btn-success">Create Group</button>              
+                    <div class="form-group container-fluid">
+                        <label for="groupName" class="m-2">Enter the name of your group</label>
+                        <input type="text" v-model="editable.name" class="form-control mt-2 mb-2" id="groupName" aria-describedby="groupName" placeholder="Group Name"> 
+                        <button class="btn btn-secondary m-2">Create Group</button>              
                     </div>
                 </form>      
             </div>

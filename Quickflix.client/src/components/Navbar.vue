@@ -36,14 +36,11 @@
     <div class="dropdown show">
       <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-toggle="dropdown">Go To</a>      
 
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <router-link :to="{name: 'MyGroups'}">
-           <span class="dropdown-item">Select Group</span>
-        </router-link>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">        
         <router-link :to="{name: 'Account'}">
           <span class="dropdown-item">My Account</span>
         </router-link>       
-        <a class="dropdown-item" href="#">Something Else</a>
+        <a class="dropdown-item">Something Else</a>
       </div>
     </div>
     
