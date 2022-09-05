@@ -9,6 +9,8 @@ export const AppState = reactive({
   /**@type {import('./models/Content.js').Content} */
   contents: [],
 
+  groups: [],
+
 
 
 })

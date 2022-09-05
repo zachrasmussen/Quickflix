@@ -17,6 +17,7 @@ export class GroupsController extends BaseController {
       .delete('/:id', this.deleteGroup)
       .put('/:id', this.editGroup)
       .get('/:groupId/groupMembers', this.getGroupMembersByGroupId)
+      
   }
   async getGroupMembersByGroupId(req, res, next) {
     try {
