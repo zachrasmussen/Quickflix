@@ -9,6 +9,13 @@ class ContentService {
                 logger.log('Getting movies', res.data)
                 AppState.contents = res.data.results
         }
+
+
+
+
+
+
+
 }
 
 
