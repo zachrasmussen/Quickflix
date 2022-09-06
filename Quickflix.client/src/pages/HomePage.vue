@@ -16,7 +16,7 @@
 
       <div class="d-flex justify-content-between mt-5">
         <h1 class="bg-danger rounded-circle p-4" @click="nextMovie()">👎🏼</h1>
-        <h1 class="bg-success rounded-circle p-4" @click="nextMovie(), createContent()">👍🏼</h1>
+        <h1 class="bg-success rounded-circle p-4" @click="nextMovie(), createContent([body])">👍🏼</h1>
       </div>
     </div>
   </div>
@@ -24,7 +24,7 @@
 </template>
   
 <script>
-  import { ref, watchEffect } from "vue";
+
 import { computed, onMounted } from '@vue/runtime-core';
 import { contentService } from '../services/ContentService.js'
 import { logger } from '../utils/Logger.js';
@@ -33,6 +33,7 @@ import { AppState } from '../AppState.js';
 import ContentCard from '../components/ContentCard.vue';
 export default {
 setup() {
+<<<<<<< HEAD
   const filterGenre = ref('')
   async function getFilteredGenre(){
     try {
@@ -47,6 +48,9 @@ setup() {
   watchEffect(()=> {
     editable.value = { ...AppState.contents}
   })
+=======
+ 
+>>>>>>> 5ab5ce9620ba851fc93c47d1daa67ff4dda506a9
   async function getContent() {
     try {
       await contentService.getContent();
@@ -70,7 +74,7 @@ setup() {
     getFilteredGenre();
   });
   return {
-    editable,
+   
  content: computed(() => AppState.contents[0]),
 account: computed(()=> AppState.account),
 myContent: computed(()=> AppState.myContent),
