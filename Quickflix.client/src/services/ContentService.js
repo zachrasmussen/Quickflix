@@ -12,10 +12,11 @@ class ContentService {
 
 
 async createContent(myContent){
+        AppState.myContent = AppState.contents
         const res = await api.post('api/content', myContent)
         console.log('Created Content', res.data)
-        AppState.myContent.push(res.data.body)
-        console.log("this my movie list", res.data)
+        // AppState.myContent = res.send([body])
+        // console.log("this my movie list", res.data)
 }
 
 
