@@ -31,10 +31,7 @@ import { AppState } from '../AppState.js';
 import ContentCard from '../components/ContentCard.vue';
 export default {
 setup() {
-  const editable = ref({})
-  watchEffect(()=> {
-    editable.value = { ...AppState.contents}
-  })
+ 
   async function getContent() {
     try {
       await contentService.getContent();
