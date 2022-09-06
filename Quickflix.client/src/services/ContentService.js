@@ -1,6 +1,6 @@
 import { AppState } from "../AppState.js"
 import { logger } from "../utils/Logger.js"
-import { ottApi } from "./AxiosService.js"
+import { api, ottApi } from "./AxiosService.js"
 
 
 class ContentService {
@@ -11,7 +11,12 @@ class ContentService {
         }
 
 
-
+async createContent(contentData){
+        const res = await api.post('account/content', contentData)
+        // logger.log('Created Content', res.data)
+        AppState.myContent.push(res.data)
+        console.log("this my movie list", res.data)
+}
 
 
 

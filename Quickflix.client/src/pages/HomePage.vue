@@ -14,7 +14,7 @@
       <h3 class="title-font text-center my-2">{{ content.title }}</h3>
       <div class="d-flex justify-content-between mt-5">
         <h1 class="bg-danger rounded-circle p-4" @click="nextMovie()">👎🏼</h1>
-        <h1 class="bg-success rounded-circle p-4" @click="nextMovie()">👍🏼</h1>
+        <h1 class="bg-success rounded-circle p-4" @click="nextMovie(), createContent(imbdid)">👍🏼</h1>
       </div>
     </div>
   </div>
@@ -22,6 +22,7 @@
 </template>
   
 <script>
+  import { ref, watchEffect } from "vue";
 import { computed, onMounted } from '@vue/runtime-core';
 import { contentService } from '../services/ContentService.js'
 import { logger } from '../utils/Logger.js';
@@ -30,6 +31,10 @@ import { AppState } from '../AppState.js';
 import ContentCard from '../components/ContentCard.vue';
 export default {
 setup() {
+  const editable = ref({})
+  watchEffect(()=> {
+    editable.value = { ...AppState.contents}
+  })
   async function getContent() {
     try {
       await contentService.getContent();
@@ -40,6 +45,8 @@ setup() {
     }
   }
 
+
+
  
 
 
@@ -48,7 +55,13 @@ setup() {
     getContent();
   });
   return {
+    editable,
  content: computed(() => AppState.contents[0]),
+account: computed(()=> AppState.account),
+
+
+
+
     enhance(url, factor = 2) {
       let ux = url.indexOf('UX') != -1 ? url.indexOf('UX') : url.indexOf('UY')
       logger.log(ux)
@@ -66,7 +79,7 @@ setup() {
     },
 
 
-    nextMovie() {
+    async nextMovie() {
       try {
         AppState.contents.shift()
         
@@ -77,6 +90,17 @@ setup() {
       }
 
 
+    },
+
+    async createContent(imbdid){
+     
+      try {
+      await contentService.createContent(editable.value)
+      editable.value = {}
+      } catch (error) {
+        logger.error(error)
+        Pop.toast(error.message, 'error')
+      }
     }
 
   };
