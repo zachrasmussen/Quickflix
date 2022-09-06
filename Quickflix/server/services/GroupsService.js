@@ -1,10 +1,11 @@
 import { BadRequest, Forbidden } from "@bcwdev/auth0provider/lib/Errors"
+import {logger} from "../utils/Logger.js"
 import { dbContext } from "../db/DbContext"
-
 
 class GroupsService {
   async getYourGroups(accountId) {
-    const groups = await dbContext.Groups.find({ accountId: accountId }).populate('group')
+    const groups = await dbContext.Groups.find({ creatorId: accountId }).populate('group') // creatorId = Schema, accountId=parameter being passed in
+    logger.log(groups)
     return groups
   }
   async editGroup(groupData, id, userId) {
