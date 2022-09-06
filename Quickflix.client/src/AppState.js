@@ -14,6 +14,8 @@ export const AppState = reactive({
 // this is for our backend api
   myContent: [],
 
+  groupContents: [],
+
   groups: [],
 
 })

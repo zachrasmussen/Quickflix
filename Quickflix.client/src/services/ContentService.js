@@ -10,6 +10,12 @@ class ContentService {
                 AppState.contents = res.data.results
         }
 
+        async getContentByGroupId(groupId) {
+                const res = await api.get(`api/groups/${groupId}/content`)
+                logger.log('Getting content by groupID', res.data)
+                AppState.groupContents = res.data
+        }
+
 
 async createContent(myContent){
         AppState.myContent = AppState.contents
