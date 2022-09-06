@@ -52,7 +52,7 @@ setup() {
     getContent();
   });
   return {
-    editable,
+   
  content: computed(() => AppState.contents[0]),
 account: computed(()=> AppState.account),
 myContent: computed(()=> AppState.myContent),
