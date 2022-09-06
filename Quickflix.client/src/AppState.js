@@ -16,4 +16,6 @@ export const AppState = reactive({
 
   groups: [],
 
+  filteredGenre: [],
+
 })

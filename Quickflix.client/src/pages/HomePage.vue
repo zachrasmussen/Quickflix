@@ -12,6 +12,8 @@
         alt=""
       />
       <h3 class="title-font text-center my-2">{{ content.title }}</h3>
+      <div class="col-2 btn btn-outline-light rounded-pill text-dark fs-4" @click="filterGenre('action')">Action</div>
+
       <div class="d-flex justify-content-between mt-5">
         <h1 class="bg-danger rounded-circle p-4" @click="nextMovie()">👎🏼</h1>
         <h1 class="bg-success rounded-circle p-4" @click="nextMovie(), createContent()">👍🏼</h1>
@@ -31,6 +33,16 @@ import { AppState } from '../AppState.js';
 import ContentCard from '../components/ContentCard.vue';
 export default {
 setup() {
+  const filterGenre = ref('')
+  async function getFilteredGenre(){
+    try {
+      AppState.filteredGenre = 
+    } catch (error) {
+      logger.error(error)
+      Pop.toast(error.message, 'error')
+    }
+  }
+
   const editable = ref({})
   watchEffect(()=> {
     editable.value = { ...AppState.contents}
@@ -47,12 +59,15 @@ setup() {
 
 
 
+
+
  
 
 
 
   onMounted(() => {
     getContent();
+    getFilteredGenre();
   });
   return {
     editable,
