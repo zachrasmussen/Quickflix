@@ -7,8 +7,11 @@ export const AppState = reactive({
   account: {},
 
   /**@type {import('./models/Content.js').Content} */
+
+  // this is for content from ott api
   contents: [],
 
+// this is for our backend api
   myContent: [],
 
   groups: [],

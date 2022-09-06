@@ -11,10 +11,10 @@ class ContentService {
         }
 
 
-async createContent(contentData){
-        const res = await api.post('account/content', contentData)
-        // logger.log('Created Content', res.data)
-        AppState.myContent.push(res.data)
+async createContent(myContent){
+        const res = await api.post('api/content', myContent)
+        console.log('Created Content', res.data)
+        AppState.myContent.push(res.data.body)
         console.log("this my movie list", res.data)
 }
 

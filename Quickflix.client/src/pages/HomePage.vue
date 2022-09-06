@@ -14,7 +14,7 @@
       <h3 class="title-font text-center my-2">{{ content.title }}</h3>
       <div class="d-flex justify-content-between mt-5">
         <h1 class="bg-danger rounded-circle p-4" @click="nextMovie()">👎🏼</h1>
-        <h1 class="bg-success rounded-circle p-4" @click="nextMovie(), createContent(imbdid)">👍🏼</h1>
+        <h1 class="bg-success rounded-circle p-4" @click="nextMovie(), createContent()">👍🏼</h1>
       </div>
     </div>
   </div>
@@ -58,6 +58,7 @@ setup() {
     editable,
  content: computed(() => AppState.contents[0]),
 account: computed(()=> AppState.account),
+myContent: computed(()=> AppState.myContent),
 
 
 
@@ -92,11 +93,12 @@ account: computed(()=> AppState.account),
 
     },
 
-    async createContent(imbdid){
+    async createContent(myContent){
+    
      
       try {
-      await contentService.createContent(editable.value)
-      editable.value = {}
+      await contentService.createContent(myContent)
+      
       } catch (error) {
         logger.error(error)
         Pop.toast(error.message, 'error')
