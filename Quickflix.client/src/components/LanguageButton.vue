@@ -1,9 +1,9 @@
 <template>
   <div
     class="col-4 btn btn-outline-light rounded-pill text-dark fs-4 selectable"
-    @click="updateGenreFilter(genre)"
+    @click="updateLanguageFilter(language)"
   >
-    {{ genre }}
+    {{ language }}
   </div>
 </template>
 <script>
@@ -12,14 +12,14 @@ import { logger } from '../utils/Logger';
 import Pop from '../utils/Pop';
 export default {
   props: {
-    genre: { type: String, required: true },
+    language: { type: String, required: true },
   },
   setup() {
 
     return {
-      async updateGenreFilter(genre) {
+      async updateLanguageFilter(language) {
         try {
-          await contentService.updateGenreFilter(genre)
+          await contentService.updateLangaugeFilter(language)
           await contentService.runFilter()
         } catch (error) {
           logger.error(error)

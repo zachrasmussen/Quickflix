@@ -93,17 +93,17 @@ export default {
 
       },
 
-      async createContent(){
-    
-     
-    try {
-    await contentService.createContent(AppState.contents[0])
-    
-    } catch (error) {
-      logger.error(error)
-      Pop.toast(error.message, 'error')
-    }
-  }
+      async createContent() {
+
+
+        try {
+          await contentService.createContent(AppState.contents[0])
+
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error')
+        }
+      }
 
     };
   },
