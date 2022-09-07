@@ -12,6 +12,9 @@
         alt=""
       />
       <h3 class="title-font text-center my-2">{{ content.title }}</h3>
+      <div v-for="g in genres" >
+        <GenreButton :genre="g"/>
+      </div>
       <div class="d-flex justify-content-between mt-5">
         <h1 class="bg-danger rounded-circle p-4" @click="nextMovie()">👎🏼</h1>
         <h1 class="bg-success rounded-circle p-4" @click="nextMovie(), createContent([body])">👍🏼</h1>
@@ -42,18 +45,13 @@ setup() {
     }
   }
 
-
-
- 
-
-
-
   onMounted(() => {
     getContent();
+    
   });
   return {
-   
- content: computed(() => AppState.contents[0]),
+genres: computed(()=> AppState.genres), 
+content: computed(() => AppState.contents[0]),
 account: computed(()=> AppState.account),
 myContent: computed(()=> AppState.myContent),
 
