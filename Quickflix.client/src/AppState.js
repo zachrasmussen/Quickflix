@@ -30,6 +30,8 @@ export const AppState = reactive({
     genre: [],
     language: [],
     provider: [],
-  }
+  },
+
+  page: 1,
 
 })
