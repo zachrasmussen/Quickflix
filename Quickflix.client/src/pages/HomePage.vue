@@ -12,16 +12,21 @@
         alt=""
       />
       <h3 class="title-font text-center my-2">{{ content.title }}</h3>
-      <div v-for="g in genres" >
-        <GenreButton :genre="g"/>
+      <div v-for="g in genres">
+        <GenreButton :genre="g" />
       </div>
       <div class="d-flex justify-content-between mt-5">
         <h1 class="bg-danger rounded-circle p-4" @click="nextMovie()">👎🏼</h1>
-        <h1 class="bg-success rounded-circle p-4" @click="nextMovie(), createContent([body])">👍🏼</h1>
+        <h1
+          class="bg-success rounded-circle p-4"
+          @click="nextMovie(), createContent([body])"
+        >
+          👍🏼
+        </h1>
       </div>
     </div>
   </div>
-  <GroupForm/>
+  <GroupForm />
 </template>
   
 <script>
@@ -33,76 +38,76 @@ import Pop from '../utils/Pop.js';
 import { AppState } from '../AppState.js';
 import ContentCard from '../components/ContentCard.vue';
 export default {
-setup() {
- 
-  async function getContent() {
-    try {
-      await contentService.getContent();
-    }
-    catch (error) {
-      logger.error("[Getting Movies]", error);
-      Pop.error(error);
-    }
-  }
+  setup() {
 
-  onMounted(() => {
-    getContent();
-    
-  });
-  return {
-genres: computed(()=> AppState.genres), 
-content: computed(() => AppState.contents[0]),
-account: computed(()=> AppState.account),
-myContent: computed(()=> AppState.myContent),
-
-
-
-
-    enhance(url, factor = 2) {
-      let ux = url.indexOf('UX') != -1 ? url.indexOf('UX') : url.indexOf('UY')
-      logger.log(ux)
-      let front = url.slice(0, ux + 2)
-      let dataStr = url.slice(ux + 2, url.indexOf('_AL.jpg') - 7)
-      logger.log('front', front)
-      logger.log('data', dataStr)
-      let data = dataStr.split(/_|,/g)
-      logger.log(data)
-      Math.round(data[0] = parseInt(data[0]) * factor)
-      Math.round(data[3] = parseInt(data[3]) * factor)
-      Math.round(data[4] = parseInt(data[4]) * factor)
-      logger.warn(front + data.join(',').replace(',', '_') + '_AL_.jpg')
-      return front + data.join(',').replace(',', '_') + '_AL_.jpg'
-    },
-
-
-    async nextMovie() {
+    async function getContent() {
       try {
-        AppState.contents.shift()
-        
-        console.log('NEXT MOVIE', AppState.contents);
-      } catch (error) {
-        logger.error(error)
-        Pop.toast(error.message, 'error')
+        await contentService.getContent();
       }
-
-
-    },
-
-    async createContent(myContent){
-      logger.log("Logging this.content", this.content)
-     
-      try {
-      await contentService.createContent(myContent)
-      
-      } catch (error) {
-        logger.error(error)
-        Pop.toast(error.message, 'error')
+      catch (error) {
+        logger.error("[Getting Movies]", error);
+        Pop.error(error);
       }
     }
 
-  };
-},
-components: { ContentCard }
+    onMounted(() => {
+      getContent();
+
+    });
+    return {
+      genres: computed(() => AppState.genres),
+      content: computed(() => AppState.contents[0]),
+      account: computed(() => AppState.account),
+      myContent: computed(() => AppState.myContent),
+
+
+
+
+      enhance(url, factor = 2) {
+        let ux = url.indexOf('UX') != -1 ? url.indexOf('UX') : url.indexOf('UY')
+        logger.log(ux)
+        let front = url.slice(0, ux + 2)
+        let dataStr = url.slice(ux + 2, url.indexOf('_AL.jpg') - 7)
+        logger.log('front', front)
+        logger.log('data', dataStr)
+        let data = dataStr.split(/_|,/g)
+        logger.log(data)
+        Math.round(data[0] = parseInt(data[0]) * factor)
+        Math.round(data[3] = parseInt(data[3]) * factor)
+        Math.round(data[4] = parseInt(data[4]) * factor)
+        logger.warn(front + data.join(',').replace(',', '_') + '_AL_.jpg')
+        return front + data.join(',').replace(',', '_') + '_AL_.jpg'
+      },
+
+
+      async nextMovie() {
+        try {
+          AppState.contents.shift()
+
+          console.log('NEXT MOVIE', AppState.contents);
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error')
+        }
+
+
+      },
+
+      async createContent(myContent) {
+        logger.log("Logging this.content", this.content)
+
+        try {
+          await contentService.createContent(myContent)
+
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error')
+        }
+      }
+
+    };
+  },
+  components: { ContentCard }
 }
 </script>
   
