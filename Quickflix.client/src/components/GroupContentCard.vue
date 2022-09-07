@@ -3,9 +3,9 @@
       <div class="row">
         <div class="col-12">
           <div class="card m-3">
-            <img class="card-img-top" src="https://thiscatdoesnotexist.com" alt="Card image cap">
+            <img class="card-img-top" :src="content.imgUrl" alt="Card image cap">
             <div class="card-body">
-              <h6 class="card-title">Movie Title</h6>      
+              <h6 class="card-title">{{content.title}}</h6>      
             </div>    
           </div>
         </div>
@@ -16,7 +16,7 @@
 <script>
 export default {
   props: {
-    group: {type: Object, required: true}
+    content: {type: Object, required: true}
   },
     setup() {
         return {};

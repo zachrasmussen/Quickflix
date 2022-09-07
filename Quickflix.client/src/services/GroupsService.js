@@ -12,7 +12,7 @@ class GroupsService {
     async getGroupById(id) {
         const res = await api.get('api/groups/'+id)
         logger.log("Getting group by ID", res.data)
-        AppState.groups
+        AppState.activeGroup = res.data
     }
 }
 

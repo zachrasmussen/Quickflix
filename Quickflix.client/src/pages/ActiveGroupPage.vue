@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
     <div class="row">
-      <h4 class="m-2">List Name</h4>
+      <h4 class="m-2">{{activeGroup.name}}</h4>
       <!-- get content cards for group -->
       <div v-for="c in contents" class="col-12">
         <GroupContentCard :content="c"/> 
@@ -48,7 +48,8 @@ export default {
         });
 
         return {
-          contents: computed(() => AppState.groupContents)
+          contents: computed(() => AppState.groupContents),
+          activeGroup: computed(() => AppState.activeGroup)
         };
     },
     components: { GroupContentCard }
