@@ -15,8 +15,8 @@
       <div v-for="g in genres">
         <GenreButton :genre="g" />
       </div>
-      <div v-for="p in providers">
-        <ProviderButton :provider="p" />
+      <div v-for="t in types">
+        <TypeButton :type="t" />
       </div>
       <div class="d-flex justify-content-between mt-5">
         <h1 class="bg-danger rounded-circle p-4" @click="nextMovie()">👎🏼</h1>
@@ -59,7 +59,7 @@ export default {
     });
     return {
       genres: computed(() => AppState.genres),
-      providers: computed(() => AppState.providers),
+      types: computed(() => AppState.types),
       content: computed(() => AppState.contents[0]),
       account: computed(() => AppState.account),
       myContent: computed(() => AppState.myContent),
@@ -89,7 +89,7 @@ export default {
       async nextMovie() {
 
         if (AppState.contents.length <= 1) {
-          await contentService.getContent(AppState.page +=1)
+          await contentService.getContent(AppState.page += 1)
         }
         try {
           AppState.contents.shift()
