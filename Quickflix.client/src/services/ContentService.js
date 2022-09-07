@@ -1,4 +1,5 @@
 import { AppState } from "../AppState.js"
+import { Content } from "../models/Content.js"
 import { logger } from "../utils/Logger.js"
 import { api, ottApi } from "./AxiosService.js"
 
@@ -7,7 +8,7 @@ class ContentService {
         async getContent() {
                 const res = await ottApi.get('')
                 logger.log('Getting movies', res.data)
-                AppState.contents = res.data.results
+                AppState.contents = res.data.results.map(c => new Content(c))
         }
 
         async getContentByGroupId(groupId) {
@@ -17,12 +18,13 @@ class ContentService {
         }
 
 
-        async createContent(myContent){
-                AppState.myContent = AppState.contents
-                const res = await api.post('api/content', myContent)
+      
+        async createContent(content) {
+
+                const res = await api.post('api/content', content)
+                AppState.myContent = res.data
                 console.log('Created Content', res.data)
-                // AppState.myContent = res.send([body])
-                // console.log("this my movie list", res.data)
+
         }
 
         async updateGenreFilter(genre) {

@@ -8,7 +8,7 @@
       <img
         class="p-0"
         v-if="content.imageurl"
-        :src="enhance(content.imageurl[0], 3)"
+        :src="enhance(content.imageurl, 3)"
         alt=""
       />
       <h3 class="title-font text-center my-2">{{ content.title }}</h3>
@@ -93,17 +93,17 @@ export default {
 
       },
 
-      async createContent(myContent) {
-        logger.log("Logging this.content", this.content)
-
-        try {
-          await contentService.createContent(myContent)
-
-        } catch (error) {
-          logger.error(error)
-          Pop.toast(error.message, 'error')
-        }
-      }
+      async createContent(){
+    
+     
+    try {
+    await contentService.createContent(AppState.contents[0])
+    
+    } catch (error) {
+      logger.error(error)
+      Pop.toast(error.message, 'error')
+    }
+  }
 
     };
   },
