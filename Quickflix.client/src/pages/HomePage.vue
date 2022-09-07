@@ -89,7 +89,7 @@ myContent: computed(()=> AppState.myContent),
     },
 
     async createContent(myContent){
-    
+      logger.log("Logging this.content", this.content)
      
       try {
       await contentService.createContent(myContent)

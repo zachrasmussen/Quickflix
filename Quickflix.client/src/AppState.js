@@ -14,7 +14,11 @@ export const AppState = reactive({
 // this is for our backend api
   myContent: [],
 
+  groupContents: [],
+
   groups: [],
+
+  activeGroup: {}
 
   genres: ["Drama","Comedy","Action","Fantasy","Horror","Romance","Western","Thriller"],
 
