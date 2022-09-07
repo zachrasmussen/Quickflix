@@ -5,18 +5,18 @@
       <ContentCard :content="c"/>
      </div> -->
 
-      <!-- <img
+      <img
         class="p-0"
         v-if="content.imageurl"
         :src="enhance(content.imageurl, 3)"
         alt=""
-      /> -->
+      />
       <h3 class="title-font text-center my-2">{{ content.title }}</h3>
       <div v-for="g in genres">
         <GenreButton :genre="g" />
       </div>
-      <div v-for="l in languages">
-        <LanguageButton :language="l" />
+      <div v-for="p in providers">
+        <ProviderButton :provider="p" />
       </div>
       <div class="d-flex justify-content-between mt-5">
         <h1 class="bg-danger rounded-circle p-4" @click="nextMovie()">👎🏼</h1>
@@ -59,36 +59,36 @@ export default {
     });
     return {
       genres: computed(() => AppState.genres),
-      languages: computed(() => AppState.languages),
+      providers: computed(() => AppState.providers),
       content: computed(() => AppState.contents[0]),
       account: computed(() => AppState.account),
       myContent: computed(() => AppState.myContent),
-      
 
 
 
 
-      // enhance(url, factor = 2) {
-      //   let ux = url.indexOf('UX') != -1 ? url.indexOf('UX') : url.indexOf('UY')
-      //   logger.log(ux)
-      //   let front = url.slice(0, ux + 2)
-      //   let dataStr = url.slice(ux + 2, url.indexOf('_AL.jpg') - 7)
-      //   logger.log('front', front)
-      //   logger.log('data', dataStr)
-      //   let data = dataStr.split(/_|,/g)
-      //   logger.log(data)
-      //   Math.round(data[0] = parseInt(data[0]) * factor)
-      //   Math.round(data[3] = parseInt(data[3]) * factor)
-      //   Math.round(data[4] = parseInt(data[4]) * factor)
-      //   logger.warn(front + data.join(',').replace(',', '_') + '_AL_.jpg')
-      //   return front + data.join(',').replace(',', '_') + '_AL_.jpg'
-      // },
+
+      enhance(url, factor = 2) {
+        let ux = url.indexOf('UX') != -1 ? url.indexOf('UX') : url.indexOf('UY')
+        logger.log(ux)
+        let front = url.slice(0, ux + 2)
+        let dataStr = url.slice(ux + 2, url.indexOf('_AL.jpg') - 7)
+        logger.log('front', front)
+        logger.log('data', dataStr)
+        let data = dataStr.split(/_|,/g)
+        logger.log(data)
+        Math.round(data[0] = parseInt(data[0]) * factor)
+        Math.round(data[3] = parseInt(data[3]) * factor)
+        Math.round(data[4] = parseInt(data[4]) * factor)
+        logger.warn(front + data.join(',').replace(',', '_') + '_AL_.jpg')
+        return front + data.join(',').replace(',', '_') + '_AL_.jpg'
+      },
 
 
       async nextMovie() {
-        
+
         if (AppState.contents.length <= 1) {
-          await contentService.getContent(AppState.page +1)
+          await contentService.getContent(AppState.page + 1)
         }
         try {
           AppState.contents.shift()
