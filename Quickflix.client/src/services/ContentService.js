@@ -46,7 +46,7 @@ class ContentService {
                 // const res = await ottApi.get('advancedsearch/?genre=' + AppState.filters.genre.join(",") || 'advancedsearch/?type=' + AppState.filters.type.join(","))
                 const res = await ottApi.get('advancedsearch/?type=' + AppState.filters.type.join(","))
 
-                AppState.contents = res.data.results.map(c => new Content(c))
+                AppState.contents = res.data.results.map(c => new Content(c)).filter(c => c.imageurl)
         }
 
 
