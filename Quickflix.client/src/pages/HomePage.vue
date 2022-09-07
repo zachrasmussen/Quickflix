@@ -59,6 +59,7 @@ export default {
     });
     return {
       genres: computed(() => AppState.genres),
+      languages: computed(() => AppState.languages),
       content: computed(() => AppState.contents[0]),
       account: computed(() => AppState.account),
       myContent: computed(() => AppState.myContent),
