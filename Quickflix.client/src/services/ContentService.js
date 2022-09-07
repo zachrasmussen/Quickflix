@@ -4,6 +4,7 @@ import { logger } from "../utils/Logger.js"
 import { api, ottApi } from "./AxiosService.js"
 
 
+
 class ContentService {
         async getContent(page = 1) {
                 logger.log(page)
@@ -14,10 +15,10 @@ class ContentService {
                 })
                 logger.log('Getting movies', res.data)
                 AppState.page = res.data.page
-        
+
                 AppState.contents = res.data.results.map(c => new Content(c)).filter(c => c.imageurl)
-              
-                
+
+
         }
 
         async getContentByGroupId(groupId) {
@@ -43,8 +44,13 @@ class ContentService {
         }
 
         async runFilter() {
-                // const res = await ottApi.get('advancedsearch/?genre=' + AppState.filters.genre.join(",") || 'advancedsearch/?type=' + AppState.filters.type.join(","))
-                const res = await ottApi.get('advancedsearch/?type=' + AppState.filters.type.join(","))
+                const res = await ottApi.get('advancedsearch/', {
+                        params: {
+                                genre: AppState.filters.genre.join(","),
+                                type: AppState.filters.type.join(",")
+                        }
+                })
+                // const res = await ottApi.get('advancedsearch/?type=' + AppState.filters.type.join(","))
 
                 AppState.contents = res.data.results.map(c => new Content(c)).filter(c => c.imageurl)
         }
