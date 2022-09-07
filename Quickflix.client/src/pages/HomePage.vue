@@ -88,7 +88,7 @@ export default {
       async nextMovie() {
         
         if (AppState.contents.length <= 1) {
-          await contentService.getContent(AppState.page +1)
+          await contentService.getContent(AppState.page +=1)
         }
         try {
           AppState.contents.shift()

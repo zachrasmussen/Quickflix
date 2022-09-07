@@ -5,10 +5,17 @@ import { api, ottApi } from "./AxiosService.js"
 
 
 class ContentService {
-        async getContent() {
-                const res = await ottApi.get('')
+        async getContent(page = 1) {
+                logger.log(page)
+                const res = await ottApi.get('', {
+                        params:{
+                                page: page
+                        }
+                })
                 logger.log('Getting movies', res.data)
+                AppState.page = res.data.page
                 AppState.contents = res.data.results.map(c => new Content(c))
+                
         }
 
         async getContentByGroupId(groupId) {
