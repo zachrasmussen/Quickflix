@@ -8,13 +8,13 @@
       <img
         class="p-0"
         v-if="content.imageurl"
-        :src="enhance(content.imageurl[0], 3)"
+        :src="enhance(content.imageurl, 3)"
         alt=""
       />
       <h3 class="title-font text-center my-2">{{ content.title }}</h3>
       <div class="d-flex justify-content-between mt-5">
         <h1 class="bg-danger rounded-circle p-4" @click="nextMovie()">👎🏼</h1>
-        <h1 class="bg-success rounded-circle p-4" @click="nextMovie(), createContent([body])">👍🏼</h1>
+        <h1 class="bg-success rounded-circle p-4" @click="nextMovie(), createContent()">👍🏼</h1>
       </div>
     </div>
   </div>
@@ -90,11 +90,11 @@ myContent: computed(()=> AppState.myContent),
 
     },
 
-    async createContent(myContent){
+    async createContent(){
     
      
       try {
-      await contentService.createContent(myContent)
+      await contentService.createContent(AppState.contents[0])
       
       } catch (error) {
         logger.error(error)
