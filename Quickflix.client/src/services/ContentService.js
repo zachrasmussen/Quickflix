@@ -11,14 +11,25 @@ class ContentService {
         }
 
 
-async createContent(myContent){
-        AppState.myContent = AppState.contents
-        const res = await api.post('api/content', myContent)
-        console.log('Created Content', res.data)
-        // AppState.myContent = res.send([body])
-        // console.log("this my movie list", res.data)
-}
+        async createContent(myContent){
+                AppState.myContent = AppState.contents
+                const res = await api.post('api/content', myContent)
+                console.log('Created Content', res.data)
+                // AppState.myContent = res.send([body])
+                // console.log("this my movie list", res.data)
+        }
 
+        async updateGenreFilter(genre) {
+                AppState.filters.genre.push(genre)
+                console.log('filtered genres in the service', AppState.filters.genre)
+                
+        }
+
+        async runFilter(){
+             const res = await ottApi.get('/?genre=' + AppState.filters.genre.join(","))
+             AppState.contents = res.data.results
+        }
+      
 
 
 

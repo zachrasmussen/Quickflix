@@ -12,8 +12,9 @@
         alt=""
       />
       <h3 class="title-font text-center my-2">{{ content.title }}</h3>
-      <div class="col-2 btn btn-outline-light rounded-pill text-dark fs-4" @click="filterGenre('action')">Action</div>
-
+      <div v-for="g in genres" >
+        <GenreButton :genre="g"/>
+      </div>
       <div class="d-flex justify-content-between mt-5">
         <h1 class="bg-danger rounded-circle p-4" @click="nextMovie()">👎🏼</h1>
         <h1 class="bg-success rounded-circle p-4" @click="nextMovie(), createContent([body])">👍🏼</h1>
@@ -33,24 +34,7 @@ import { AppState } from '../AppState.js';
 import ContentCard from '../components/ContentCard.vue';
 export default {
 setup() {
-<<<<<<< HEAD
-  const filterGenre = ref('')
-  async function getFilteredGenre(){
-    try {
-      AppState.filteredGenre = 
-    } catch (error) {
-      logger.error(error)
-      Pop.toast(error.message, 'error')
-    }
-  }
-
-  const editable = ref({})
-  watchEffect(()=> {
-    editable.value = { ...AppState.contents}
-  })
-=======
  
->>>>>>> 5ab5ce9620ba851fc93c47d1daa67ff4dda506a9
   async function getContent() {
     try {
       await contentService.getContent();
@@ -61,21 +45,13 @@ setup() {
     }
   }
 
-
-
-
-
- 
-
-
-
   onMounted(() => {
     getContent();
-    getFilteredGenre();
+    
   });
   return {
-   
- content: computed(() => AppState.contents[0]),
+genres: computed(()=> AppState.genres), 
+content: computed(() => AppState.contents[0]),
 account: computed(()=> AppState.account),
 myContent: computed(()=> AppState.myContent),
 

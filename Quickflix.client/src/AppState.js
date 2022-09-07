@@ -16,6 +16,16 @@ export const AppState = reactive({
 
   groups: [],
 
-  filteredGenre: [],
+  genres: ["Drama","Comedy","Action","Fantasy","Horror","Romance","Western","Thriller"],
+
+  languages: ["French","Italian","German","Japanese","Spanish","Portuguese","English"],
+
+  providers: ["netflix", "amazonprimevideo", "appletvplus","disneyplus","hbomaxfree"],
+
+  filters: {
+    genre: [],
+    language: [],
+    provider: [],
+  }
 
 })
