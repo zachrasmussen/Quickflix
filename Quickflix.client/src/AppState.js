@@ -18,7 +18,7 @@ export const AppState = reactive({
 
   groups: [],
 
-  activeGroup: {}
+  activeGroup: {},
 
   genres: ["Drama","Comedy","Action","Fantasy","Horror","Romance","Western","Thriller"],
 
