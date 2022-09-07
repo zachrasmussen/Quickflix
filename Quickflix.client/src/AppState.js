@@ -11,7 +11,7 @@ export const AppState = reactive({
   // this is for content from ott api
   contents: [],
 
-// this is for our backend api
+  // this is for our backend api
   myContent: [],
 
   groupContents: [],
@@ -20,11 +20,11 @@ export const AppState = reactive({
 
   activeGroup: {},
 
-  genres: ["Drama","Comedy","Action","Fantasy","Horror","Romance","Western","Thriller"],
+  genres: ["Drama", "Comedy", "Action", "Fantasy", "Horror", "Romance", "Western", "Thriller"],
 
-  languages: ["French","Italian","German","Japanese","Spanish","Portuguese","English"],
+  languages: ["French", "Italian", "German", "Japanese", "Spanish", "Portuguese", "English"],
 
-  providers: ["netflix", "amazonprimevideo", "appletvplus","disneyplus","hbomaxfree"],
+  providers: ["netflix", "amazonprimevideo", "appletvplus", "disneyplus", "hbomaxfree"],
 
   filters: {
     genre: [],
