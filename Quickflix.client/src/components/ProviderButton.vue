@@ -1,9 +1,9 @@
 <template>
   <div
     class="col-4 btn btn-outline-light rounded-pill text-dark fs-4 selectable"
-    @click="updateLanguageFilter(language)"
+    @click="updateProviderFilter(provider)"
   >
-    {{ language }}
+    {{ provider }}
   </div>
 </template>
 <script>
@@ -12,14 +12,14 @@ import { logger } from '../utils/Logger';
 import Pop from '../utils/Pop';
 export default {
   props: {
-    language: { type: String, required: true },
+    provider: { type: String, required: true },
   },
   setup() {
 
     return {
-      async updateLanguageFilter(language) {
+      async updateProviderFilter(provider) {
         try {
-          await contentService.updateLangaugeFilter(language)
+          await contentService.updateProviderFilter(provider)
           await contentService.runFilter()
         } catch (error) {
           logger.error(error)
