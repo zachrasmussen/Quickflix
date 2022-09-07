@@ -6,10 +6,10 @@
      </div> -->
 
       <img
-        class="p-0"
-        v-if="content.imageurl"
+        class="p-0 img-default img-fluid"
+        v-if="(content.imageurl)"
         :src="enhance(content.imageurl, 3)"
-        alt=""
+        alt="" 
       />
       <h3 class="title-font text-center my-2">{{ content.title }}</h3>
       <div v-for="g in genres">
@@ -69,6 +69,7 @@ export default {
 
 
       enhance(url, factor = 2) {
+        logger.log('WHOLE', url)
         let ux = url.indexOf('UX') != -1 ? url.indexOf('UX') : url.indexOf('UY')
         logger.log(ux)
         let front = url.slice(0, ux + 2)
@@ -121,6 +122,14 @@ export default {
 </script>
   
 <style scoped lang="scss">
+  .img-default {
+    background-image: url('https://www.prokerala.com/movies/assets/img/no-poster-available.jpg');
+    background-position: center;
+    background-size: cover;
+    height: 85vh;
+    width: 100%;
+    
+  }
 .home {
   display: grid;
   height: 80vh;

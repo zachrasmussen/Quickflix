@@ -14,7 +14,9 @@ class ContentService {
                 })
                 logger.log('Getting movies', res.data)
                 AppState.page = res.data.page
-                AppState.contents = res.data.results.map(c => new Content(c))
+        
+                AppState.contents = res.data.results.map(c => new Content(c)).filter(c => c.imageurl)
+              
                 
         }
 
