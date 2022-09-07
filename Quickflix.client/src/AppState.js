@@ -24,12 +24,13 @@ export const AppState = reactive({
 
   languages: ["French", "Italian", "German", "Japanese", "Spanish", "Portuguese", "English"],
 
-  providers: ["netflix", "amazonprimevideo", "appletvplus", "disneyplus", "hbomaxfree"],
+  types: ["movie", "show"],
 
   filters: {
     genre: [],
     language: [],
-    provider: [],
+    // provider: [],
+    type: []
   },
 
   page: 0,

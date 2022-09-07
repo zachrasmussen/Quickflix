@@ -7,15 +7,15 @@ import { api, ottApi } from "./AxiosService.js"
 class ContentService {
         async getContent(page = 1) {
                 logger.log(page)
-                const res = await ottApi.get('', {
-                        params:{
-                                page: page
+                const res = await ottApi.get('advancedsearch', {
+                        params: {
+                                page: page,
                         }
                 })
                 logger.log('Getting movies', res.data)
                 AppState.page = res.data.page
                 AppState.contents = res.data.results.map(c => new Content(c))
-                
+
         }
 
         async getContentByGroupId(groupId) {
@@ -23,8 +23,6 @@ class ContentService {
                 logger.log('Getting content by groupID', res.data)
                 AppState.groupContents = res.data
         }
-
-
 
         async createContent(content) {
                 const res = await api.post('api/content', content)
@@ -37,14 +35,15 @@ class ContentService {
                 console.log('filtered genres in the service', AppState.filters.genre)
         }
 
-        async updateProviderFilter(provider) {
-                AppState.filters.provider.push(provider)
-                console.log('filtered provider in the service', AppState.filters.provider)
+        async updateTypeFilter(type) {
+                AppState.filters.type.push(type)
+                console.log('filtered type in the service', AppState.filters.type)
         }
 
         async runFilter() {
-                const res = await ottApi.get('/?genre=' + AppState.filters.genre.join(","))
-                // const res = await ottApi.get('/?getPlatforms' + AppState.filters.provider.join(","))
+                // const res = await ottApi.get('advancedsearch/?genre=' + AppState.filters.genre.join(",") || 'advancedsearch/?type=' + AppState.filters.type.join(","))
+                const res = await ottApi.get('advancedsearch/?type=' + AppState.filters.type.join(","))
+
                 AppState.contents = res.data.results.map(c => new Content(c))
         }
 

@@ -1,9 +1,9 @@
 <template>
   <div
     class="col-4 btn btn-outline-light rounded-pill text-dark fs-4 selectable"
-    @click="updateProviderFilter(provider)"
+    @click="updateTypeFilter(type)"
   >
-    {{ provider }}
+    {{ type }}
   </div>
 </template>
 <script>
@@ -12,14 +12,14 @@ import { logger } from '../utils/Logger';
 import Pop from '../utils/Pop';
 export default {
   props: {
-    provider: { type: String, required: true },
+    type: { type: String, required: true },
   },
   setup() {
 
     return {
-      async updateProviderFilter(provider) {
+      async updateTypeFilter(type) {
         try {
-          await contentService.updateProviderFilter(provider)
+          await contentService.updateTypeFilter(type)
           await contentService.runFilter()
         } catch (error) {
           logger.error(error)
