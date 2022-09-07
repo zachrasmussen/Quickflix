@@ -14,15 +14,10 @@ class ContentService {
                 })
                 logger.log('Getting movies', res.data)
                 AppState.page = res.data.page
-<<<<<<< HEAD
         
                 AppState.contents = res.data.results.map(c => new Content(c)).filter(c => c.imageurl)
               
                 
-=======
-                AppState.contents = res.data.results.map(c => new Content(c))
-
->>>>>>> d216e6902b67ffff96403fbbdbdb5cc31639dcc8
         }
 
         async getContentByGroupId(groupId) {
