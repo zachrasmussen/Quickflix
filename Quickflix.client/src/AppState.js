@@ -20,11 +20,11 @@ export const AppState = reactive({
 
   activeGroup: {},
 
-  genres: ["Drama", "Comedy", "Action", "Fantasy", "Horror", "Romance", "Western", "Thriller"],
+  genres: ["Drama", "Comedy", "Action", "Fantasy", "Horror", "Romance", "Thriller"],
 
   languages: ["French", "Italian", "German", "Japanese", "Spanish", "Portuguese", "English"],
 
-  types: ["movie", "show"],
+  types: ["movie", "show", "tvseries"],
 
   filters: {
     genre: [],
