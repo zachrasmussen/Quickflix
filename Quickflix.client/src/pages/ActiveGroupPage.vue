@@ -16,9 +16,16 @@
       <button class="col-4 btn btn-primary text-white" @click="joinGroup()">
         Join Group
       </button>
+      <div v-for="a in activeGroupMembers">
+        <img
+          class="img-fluid group-member-name rounded-circle"
+          :src="a.profile.picture"
+          alt=""
+        />
+      </div>
       <!-- get content cards for group -->
-      <div class="col-12" v-for="m in myContent" :key="m.id">
-        <GroupContentCard :myContent="m" />
+      <div v-for="c in contents" class="col-12">
+        <GroupContentCard :content="c" />
       </div>
     </div>
   </div>
@@ -89,11 +96,31 @@ export default {
     return {
       contents: computed(() => AppState.groupContents),
       activeGroup: computed(() => AppState.activeGroup),
-      myContent: computed(() => AppState.myContent)
+      activeGroupMembers: computed(() => AppState.activeGroupMembers),
+      myContent: computed(() => AppState.myContent),
+      async joinGroup() {
+        try {
+          let newMember = {
+            groupId: route.params.groupId
+          }
+          await groupsService.createGroupMember(newMember)
+        } catch (error) {
+          logger.log(error)
+        }
+      }
     };
   },
   components: { GroupContentCard, ContentCard }
 };
 </script>
 <style>
+.group-member-name {
+  width: 55px;
+  height: 55px;
+}
 </style>
+
+
+
+
+
