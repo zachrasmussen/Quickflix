@@ -44,9 +44,9 @@
         aria-label="Close"
       ></button>
     </div>
-  </div>
-  <div class="offcanvas-body">
-    <ContentCard />
+    <div class="offcanvas-body">
+      <ContentCard />
+    </div>
   </div>
 </template>
 
