@@ -52,7 +52,6 @@ export default {
       }
     }
 
-<<<<<<< HEAD
         async function getContentByGroupId() {
           try {
             await contentService.getContentByGroupId(route.params.groupId)
@@ -73,42 +72,6 @@ export default {
         };
     },
     components: { GroupContentCard, ContentCard }
-=======
-    async function getContentByGroupId() {
-      try {
-        await contentService.getContentByGroupId(route.params.groupId)
-      } catch (error) {
-        logger.error(error)
-        Pop.error(error)
-      }
-    }
-    onMounted(async () => {
-      getGroupById();
-      getContentByGroupId();
-    });
-
-    return {
-      contents: computed(() => AppState.groupContents),
-      activeGroup: computed(() => AppState.activeGroup),
-      // newGroupMember: computed(() => AppState.account.id)
-      async joinGroup() {
-        try {
-          // const newGroupMember = {
-          //   groupId: AppState.activeGroup.id,
-          //   accountId: AppState.account.id
-          // }
-          let accountId = AppState.account.id
-          // logger.log('creating new member', newGroupMember)
-          await groupsService.createGroupMember(route.params.groupId, accountId)
-        } catch (error) {
-          logger.error(error)
-        }
-      },
-    };
-  },
-
-  components: { GroupContentCard }
->>>>>>> 876f4e281f9363958052b605fe6879aaed30722d
 };
 </script>
 <style>
