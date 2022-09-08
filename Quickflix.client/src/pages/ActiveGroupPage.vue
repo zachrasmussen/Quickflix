@@ -24,8 +24,8 @@
         />
       </div>
       <!-- get content cards for group -->
-      <div v-for="c in contents" class="col-12">
-        <GroupContentCard :content="c" />
+      <div v-for="m in myContent" :key="m.id" class="col-12">
+        <GroupContentCard :myContent="m" />
       </div>
     </div>
   </div>
