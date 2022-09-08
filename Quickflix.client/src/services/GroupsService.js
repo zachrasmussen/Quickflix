@@ -15,8 +15,8 @@ class GroupsService {
         AppState.activeGroup = res.data
     }
 
-    async createGroupMember(groupId, accountId) {
-        const res = await api.post(`api/groups/${groupId}/groupMembers`, accountId)
+    async createGroupMember(newMember) {
+        const res = await api.post(`api/groupMembers`, newMember)
         logger.log('creating new member from the service', res.data)
         AppState.activeGroupMembers.push(res.data)
     }
