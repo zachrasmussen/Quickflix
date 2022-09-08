@@ -29,7 +29,7 @@ const routes = [
     beforeEnter: authGuard
   },
   {
-    path: '/activegroup/:groupId',
+    path: '/groups/:groupId',
     name: 'ActiveGroup',
     component: loadPage('ActiveGroupPage'),
     beforeEnter: authGuard

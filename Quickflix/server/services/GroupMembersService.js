@@ -1,5 +1,6 @@
 import { BadRequest } from "@bcwdev/auth0provider/lib/Errors"
 import { dbContext } from "../db/DbContext"
+import { logger } from "../utils/Logger"
 import { groupsService } from "./GroupsService"
 
 
@@ -26,11 +27,13 @@ class GroupMembersService {
         return 'Member Removed'
     }
     async becomeMember(newMember) {
-        const group = await groupsService.getGroupById(newMember.groupId)
+        logger.log("is this working", newMember)
+        // const group = await groupsService.getGroupById(newMember)
+
         const groupMember = await dbContext.GroupMembers.create(newMember)
         await groupMember.populate('group')
         await groupMember.populate('profile', 'name picture')
-        await group.save()
+        await groupMember.save()
         return groupMember
     }
 }

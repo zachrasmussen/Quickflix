@@ -26,6 +26,8 @@ export const AppState = reactive({
 
   types: ["movie", "show", "tvseries"],
 
+  activeGroupMembers: [],
+
   filters: {
     genre: [],
     language: [],
