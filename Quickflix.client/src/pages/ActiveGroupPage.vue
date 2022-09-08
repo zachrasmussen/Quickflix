@@ -10,10 +10,12 @@
         Join Group
       </button>
       <!-- get content cards for group -->
-      <div v-for="c in contents" class="col-12">
-        <GroupContentCard :content="c" />
-      </div>
+      <div class="col-12" v-for="m in myContent" :key="m.id">
+        <GroupContentCard :myContent="m" />
       
+      </div>
+    
+     
     </div>
   </div>
   <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
@@ -22,7 +24,8 @@
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
-    ...<div><ContentCard /></div>
+
+    <div><ContentCard /></div>
   </div>
 </div>
 </template>
@@ -39,6 +42,10 @@ import { AppState } from '../AppState';
 import ContentCard from "../components/ContentCard.vue";
 
 export default {
+  // props: {
+  //   myContent: {type: Object, required: true}
+  // },
+
   setup() {
     const route = useRoute();
     async function getGroupById() {
@@ -68,7 +75,8 @@ export default {
 
         return {
           contents: computed(() => AppState.groupContents),
-          activeGroup: computed(() => AppState.activeGroup)
+          activeGroup: computed(() => AppState.activeGroup),
+          myContent: computed(()=> AppState.myContent)
         };
     },
     components: { GroupContentCard, ContentCard }

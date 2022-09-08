@@ -1,26 +1,29 @@
 <template>
+  <div v-if="content">
+    
     <img
-        class="p-0 img-default img-fluid"
-        v-if="(content.imageurl)"
-        :src="enhance(content.imageurl, 3)"
-        alt="" 
-      />
-      <h3 class="title-font text-center my-2">{{ content.title }}</h3>
-      <div v-for="g in genres">
-        <GenreButton :genre="g" />
-      </div>
-      <div v-for="t in types">
-        <TypeButton :type="t" />
+    class="p-0 img-default img-fluid"
+    
+    :src="enhance(content.imageurl, 3)"
+    alt="" 
+    />
+    <h3 class="title-font text-center my-2">{{ content.title }}</h3>
+    <div v-for="g in genres">
+      <GenreButton :genre="g" />
+    </div>
+    <div v-for="t in types">
+      <TypeButton :type="t" />
       </div>
       <div class="d-flex justify-content-between mt-5">
         <h1 class="bg-danger rounded-circle p-4" @click="nextMovie()">👎🏼</h1>
         <h1
-          class="bg-success rounded-circle p-4"
-          @click="nextMovie(), createContent([body])"
+        class="bg-success rounded-circle p-4"
+        @click="createContent([body]), nextMovie()"
         >
-          👍🏼
-        </h1>
-      </div>
+        👍🏼
+      </h1>
+    </div>
+  </div>
   </template>
   
   <script>
@@ -34,9 +37,9 @@ import Pop from "../utils/Pop";
 
  
   export default {
-      props: {
-          content: { type: Object, required: true}
-      },
+      // props: {
+      //     myContent: { type: Object, required: true}
+      // },
       setup() {
 const route = useRoute()
     //     async function getContent() {
@@ -99,12 +102,11 @@ try {
 },
 
 async createContent() {
-if (route.params.groupId == true) {
-    
-    AppState.myContent.push(route.params.groupId)
-}
-
-try {
+  
+  try {
+      
+      AppState.contents[0].groupId = route.params.groupId
+  
   await contentService.createContent(AppState.contents[0])
 
 } catch (error) {
