@@ -5,16 +5,23 @@ import { api } from "./AxiosService";
 class GroupsService {
     async createGroup(newGroup) {
         const res = await api.post('api/groups', newGroup)
-        logger.log('creating group from service', res.data) 
+        logger.log('creating group from service', res.data)
         AppState.groups.push(res.data)
-    }   
-    
+    }
+
     async getGroupById(id) {
-        const res = await api.get('api/groups/'+id)
+        const res = await api.get('api/groups/' + id)
         logger.log("Getting group by ID", res.data)
         AppState.activeGroup = res.data
     }
+
+    async createGroupMember(groupId, accountId) {
+        const res = await api.post(`api/groups/${groupId}/groupMembers`, accountId)
+        logger.log('creating new member from the service', res.data)
+        AppState.activeGroupMembers.push(res.data)
+    }
 }
+
 
 export const groupsService = new GroupsService()
 
