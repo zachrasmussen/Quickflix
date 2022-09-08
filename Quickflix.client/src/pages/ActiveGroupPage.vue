@@ -12,7 +12,7 @@
   <div class="container-fluid">
     <div class="row d-flex justify-content-center">
       <h4 class="m-2 text-center">{{ activeGroup.name }}</h4>
-      <!-- TODO add @click later -->
+
       <button class="col-4 btn btn-primary text-white" @click="joinGroup()">
         Join Group
       </button>
@@ -44,10 +44,9 @@
         aria-label="Close"
       ></button>
     </div>
-    <div class="offcanvas-body">
-      ...
-      <div><ContentCard /></div>
-    </div>
+  </div>
+  <div class="offcanvas-body">
+    <ContentCard />
   </div>
 </template>
 
