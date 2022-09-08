@@ -16,7 +16,14 @@
       <button class="col-4 btn btn-primary text-white" @click="joinGroup()">
         Join Group
       </button>
-
+      <div v-for="a in activeGroupMembers">
+        <img
+          class="img-fluid rounded-circle"
+          :src="a.profile.picture"
+          :title="a.profile.name"
+          alt=""
+        />
+      </div>
       <!-- get content cards for group -->
       <div v-for="c in contents" class="col-12">
         <GroupContentCard :content="c" />
