@@ -18,9 +18,8 @@
       </button>
       <div v-for="a in activeGroupMembers">
         <img
-          class="img-fluid rounded-circle"
+          class="img-fluid group-member-name rounded-circle"
           :src="a.profile.picture"
-          :title="a.profile.name"
           alt=""
         />
       </div>
@@ -111,4 +110,8 @@ export default {
 };
 </script>
 <style>
+.group-member-name {
+  height: 55px;
+  width: 55px;
+}
 </style>
