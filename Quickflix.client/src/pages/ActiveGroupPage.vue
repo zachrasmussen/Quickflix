@@ -16,16 +16,9 @@
       <button class="col-4 btn btn-primary text-white" @click="joinGroup()">
         Join Group
       </button>
-      <div v-for="a in activeGroupMembers">
-        <img
-          class="img-fluid group-member-name rounded-circle"
-          :src="a.profile.picture"
-          alt=""
-        />
-      </div>
       <!-- get content cards for group -->
-      <div v-for="c in contents" class="col-12">
-        <GroupContentCard :content="c" />
+      <div class="col-12" v-for="m in myContent" :key="m.id">
+        <GroupContentCard :myContent="m" />
       </div>
     </div>
   </div>
@@ -62,6 +55,10 @@ import { AppState } from '../AppState';
 import ContentCard from "../components/ContentCard.vue";
 
 export default {
+  // props: {
+  //   myContent: {type: Object, required: true}
+  // },
+
   setup() {
     const route = useRoute();
     async function getGroupById() {
@@ -91,26 +88,12 @@ export default {
 
     return {
       contents: computed(() => AppState.groupContents),
-      activeGroupMembers: computed(() => AppState.activeGroupMembers),
       activeGroup: computed(() => AppState.activeGroup),
-      async joinGroup() {
-        try {
-          let newMember = {
-            groupId: route.params.groupId
-          }
-          await groupsService.createGroupMember(newMember)
-        } catch (error) {
-          logger.log(error)
-        }
-      }
+      myContent: computed(() => AppState.myContent)
     };
   },
   components: { GroupContentCard, ContentCard }
 };
 </script>
 <style>
-.group-member-name {
-  height: 55px;
-  width: 55px;
-}
 </style>
