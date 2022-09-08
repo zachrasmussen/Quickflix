@@ -1,4 +1,7 @@
 <template>
+  <button class="btn btn-secondary p-2 m-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Find</button>
+
+  
   <div class="container-fluid">
     <div class="row">
       <h4 class="m-2">{{activeGroup.name}}</h4>
@@ -6,8 +9,18 @@
       <div v-for="c in contents" class="col-12">
         <GroupContentCard :content="c"/> 
       </div>
+      
     </div>
   </div>
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+  <div class="offcanvas-header">
+    <h5 id="offcanvasTopLabel">Find</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    ...<div><ContentCard /></div>
+  </div>
+</div>
 </template>
 
 <script>
@@ -19,6 +32,7 @@ import GroupContentCard from '../components/GroupContentCard.vue';
 import { contentService } from '../services/ContentService';
 import { computed } from '@vue/reactivity';
 import { AppState } from '../AppState';
+import ContentCard from "../components/ContentCard.vue";
 
 export default {
     setup() {
@@ -45,6 +59,7 @@ export default {
         onMounted(async () => {
             getGroupById();
             getContentByGroupId();
+            
         });
 
         return {
@@ -52,7 +67,7 @@ export default {
           activeGroup: computed(() => AppState.activeGroup)
         };
     },
-    components: { GroupContentCard }
+    components: { GroupContentCard, ContentCard }
 };
 </script>
 <style>

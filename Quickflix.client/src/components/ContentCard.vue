@@ -26,6 +26,7 @@
   <script>
 import { computed } from "@vue/reactivity"
 import { onMounted } from "vue";
+import { routeLocationKey, useRoute } from "vue-router";
 import { AppState } from "../AppState"
 import { contentService } from "../services/ContentService";
 import { logger } from "../utils/Logger"
@@ -33,11 +34,11 @@ import Pop from "../utils/Pop";
 
  
   export default {
-    //   props: {
-    //       content: { type: String, required: true}
-    //   },
+      props: {
+          content: { type: Object, required: true}
+      },
       setup() {
-
+const route = useRoute()
     //     async function getContent() {
     //   try {
     //     await contentService.getContent();
@@ -98,7 +99,10 @@ try {
 },
 
 async createContent() {
-
+if (route.params.groupId == true) {
+    
+    AppState.myContent.push(route.params.groupId)
+}
 
 try {
   await contentService.createContent(AppState.contents[0])

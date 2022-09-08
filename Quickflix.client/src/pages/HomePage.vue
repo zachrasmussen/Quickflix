@@ -2,7 +2,7 @@
   <div class="container-fluid" v-if="content">
     <div class="row">
       <div class="">
-      <ContentCard />
+      <ContentCard :content="c"/>
      </div>
 
       
