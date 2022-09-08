@@ -87,10 +87,20 @@ export default {
         Pop.error(error)
       }
     }
+
+    async function getGroupMembersByGroupId() {
+      try {
+        await groupsService.getGroupMembersByGroupId(route.params.groupId)
+      } catch (error) {
+        logger.error(error)
+      }
+    }
+
+
     onMounted(async () => {
       getGroupById();
       getContentByGroupId();
-
+      getGroupMembersByGroupId();
     });
 
     return {
