@@ -13,7 +13,6 @@ export class GroupsController extends BaseController {
       .get('/:id', this.getGroupById)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('/:groupId/content', this.getContentByGroupId)
-      .post('/:groupId/groupMembers', this.becomeMember)
       .post('', this.create)
       .delete('/:id', this.deleteGroup)
       .put('/:id', this.editGroup)
@@ -37,15 +36,7 @@ export class GroupsController extends BaseController {
       next(error)
     }
   }
-  async becomeMember(req, res, next) {
-    try {
-      req.body.accountId = req.userInfo.id
-      const groupMember = await groupMembersService.becomeMember(req.params.id, req.body)
-      return res.send(groupMember)
-    } catch (error) {
-      next(error)
-    }
-  }
+
   async editGroup(req, res, next) {
     try {
       const groupData = req.body

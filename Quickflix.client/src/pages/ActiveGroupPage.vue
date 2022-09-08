@@ -1,7 +1,7 @@
 <template>
   <button class="btn btn-secondary p-2 m-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Find</button>
 
-  
+
   <div class="container-fluid">
     <div class="row d-flex justify-content-center">
       <h4 class="m-2 text-center">{{ activeGroup.name }}</h4>
@@ -16,14 +16,14 @@
       </div>
     
      
+      </div>
     </div>
-  </div>
   <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
-  <div class="offcanvas-header">
-    <h5 id="offcanvasTopLabel">Find</h5>
+    <div class="offcanvas-header">
+      <h5 id="offcanvasTopLabel">Find</h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
+    </div>
+    <div class="offcanvas-body">
 
     <div><ContentCard /></div>
   </div>
@@ -59,27 +59,27 @@ export default {
       }
     }
 
-        async function getContentByGroupId() {
-          try {
-            await contentService.getContentByGroupId(route.params.groupId)
-          } catch (error) {
-            logger.error(error)
-            Pop.error(error)
-          }
-        }
-        onMounted(async () => {
-            getGroupById();
-            getContentByGroupId();
-            
-        });
+    async function getContentByGroupId() {
+      try {
+        await contentService.getContentByGroupId(route.params.groupId)
+      } catch (error) {
+        logger.error(error)
+        Pop.error(error)
+      }
+    }
+    onMounted(async () => {
+      getGroupById();
+      getContentByGroupId();
 
-        return {
-          contents: computed(() => AppState.groupContents),
-          activeGroup: computed(() => AppState.activeGroup),
+    });
+
+    return {
+      contents: computed(() => AppState.groupContents),
+      activeGroup: computed(() => AppState.activeGroup),
           myContent: computed(()=> AppState.myContent)
-        };
-    },
-    components: { GroupContentCard, ContentCard }
+    };
+  },
+  components: { GroupContentCard, ContentCard }
 };
 </script>
 <style>

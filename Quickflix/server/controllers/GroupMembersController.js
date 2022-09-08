@@ -9,7 +9,7 @@ export class GroupMembersController extends BaseController {
         super('api/groupMembers')
         this.router
             .use(Auth0Provider.getAuthorizedUserInfo)
-            // .post('', this.becomeMember)
+            .post('', this.becomeMember)
             .delete('/:id', this.removeMember)
 
     }
@@ -21,13 +21,13 @@ export class GroupMembersController extends BaseController {
             next(error)
         }
     }
-    // async becomeMember(req, res, next) {
-    //     try {
-    //         req.body.accountId = req.userInfo.id
-    //         const groupMember = await groupMembersService.becomeMember(req.body)
-    //         return res.send(groupMember)
-    //     } catch (error) {
-    //         next(error)
-    //     }
-    // }
+    async becomeMember(req, res, next) {
+        try {
+            req.body.accountId = req.userInfo.id
+            const groupMember = await groupMembersService.becomeMember(req.body)
+            return res.send(groupMember)
+        } catch (error) {
+            next(error)
+        }
+    }
 }

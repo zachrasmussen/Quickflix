@@ -44,7 +44,6 @@ export default {
       editable,
       async handleSubmit() {
         try {
-          debugger
           logger.log("Creating group", editable.value);
           await groupsService.createGroup(editable.value);
           Pop.toast("Group Created!");
