@@ -8,7 +8,7 @@
     <h4>My groups</h4> 
     <nav>
       <div v-for="g in groups" :key="g.id">
-        <router-link :to="{name: 'ActiveGroupPage', params: {groupId: g.id}}">
+        <router-link :to="{name: 'ActiveGroup', params: {groupId: g.id}}">
           <p >{{g.name}}</p>
         </router-link>
       </div>  

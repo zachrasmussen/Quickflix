@@ -3,7 +3,7 @@
       <div class="row">
         <div class="col-12">
           <div class="card m-3">
-            <img class="card-img-top" :src="content.imgUrl" alt="Card image cap">
+            <img class="card-img-top" :src="content.imageurl" alt="Card image cap">
             <div class="card-body">
               <h6 class="card-title">{{content.title}}</h6>      
             </div>    
