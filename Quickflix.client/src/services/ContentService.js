@@ -13,7 +13,7 @@ class ContentService {
                                 page: page,
                                 start_year: 2010,
                                 end_year: 2022,
-                                min_imdb: 7.5,
+                                min_imdb: 6,
                                 max_imdb: 9.9,
                                 language: 'english',
                                 sort: 'latest,highestrated',
