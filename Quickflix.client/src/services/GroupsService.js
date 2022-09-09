@@ -8,7 +8,7 @@ class GroupsService {
         logger.log('creating group from service', res.data)
         AppState.groups.push(res.data)
     }
-    // TODO leaving here for the night, error in the console says "Cannot read properties of undefined (reading 'picture')"
+
     async getGroupMembersByGroupId(groupId) {
         const res = await api.get(`api/groups/${groupId}/groupMembers`)
         logger.log('getting group members in the service', res.data)
