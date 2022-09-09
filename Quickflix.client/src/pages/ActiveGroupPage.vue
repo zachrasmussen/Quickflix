@@ -137,7 +137,7 @@ export default {
       async displayUrl() {
         // document.getElementById("url").innerHTML = window.location.href;
         // navigator.clipboard.writeText(copyText.value);
-        navigator.clipboard.writeText('http://localhost:8080/#/' + route.fullPath);
+        navigator.clipboard.writeText('http://localhost:8080/#' + route.fullPath);
 
         // alert("Copied the group");
       }
