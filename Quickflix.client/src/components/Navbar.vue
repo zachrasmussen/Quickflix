@@ -16,7 +16,10 @@
     >
       <span class="navbar-toggler-icon" />
     </button>
-
+    <div class="collapse navbar-collapse" id="navbarText">
+      <!-- LOGIN COMPONENT HERE -->
+      <Login />
+    </div>
     <div>
       <i
         class="mdi mdi-plus-circle-outline m-3"
@@ -39,7 +42,6 @@
 
       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
         <router-link :to="{ name: 'Account' }">
-          <Login />
           <span class="dropdown-item">My Account</span>
         </router-link>
         <a class="dropdown-item">Something Else</a>
