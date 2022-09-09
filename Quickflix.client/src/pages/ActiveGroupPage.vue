@@ -13,9 +13,14 @@
     <div class="row d-flex justify-content-center">
       <h4 class="m-2 text-center">{{ activeGroup.name }}</h4>
 
-      <button class="col-4 btn btn-primary text-white" @click="joinGroup()">
+      <button
+        class="col-4 btn btn-primary text-white"
+        v-if="alreadyJoined"
+        @click="joinGroup()"
+      >
         Join Group
       </button>
+
       <div v-for="a in activeGroupMembers">
         <img
           class="img-fluid group-member-name rounded-circle"

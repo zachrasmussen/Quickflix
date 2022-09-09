@@ -8,7 +8,7 @@ import { groupsService } from "./GroupsService"
 class GroupMembersService {
 
     async getGroupMembersByGroupId(groupId) {
-        const groupMembers = await dbContext.GroupMembers.find({ groupId })
+        const groupMembers = await dbContext.GroupMembers.find({ groupId }).populate('profile', 'name picture')
         return groupMembers
     }
     async removeMember(memberId, userId) {
