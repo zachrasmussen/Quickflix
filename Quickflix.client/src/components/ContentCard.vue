@@ -113,9 +113,9 @@ import DetailsCard from "./DetailsCard.vue";
     .img-default {
     background-image: url('https://www.prokerala.com/movies/assets/img/no-poster-available.jpg');
     background-position: center;
-    background-size: 600px;
-    /* height: 800px;
-    width: 390px; */
+    background-size: cover;
+    height: 800px;
+    width: 360px;
     
   }
   </style>
