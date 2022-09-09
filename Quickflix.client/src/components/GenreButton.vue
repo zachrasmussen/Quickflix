@@ -1,6 +1,6 @@
 <template>
   <div
-    class="col-4 btn btn-outline-light rounded-pill text-dark fs-4 selectable"
+    class="col-6 btn btn-outline-light rounded-pill text-dark fs-4 selectable"
     @click="updateGenreFilter(genre)"
   >
     {{ genre }}

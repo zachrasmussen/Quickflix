@@ -16,37 +16,35 @@
     >
       <span class="navbar-toggler-icon" />
     </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav me-auto">
-        <li>
-          <router-link
-            :to="{ name: 'About' }"
-            class="btn text-black lighten-30 selectable text-uppercase"
-          >
-            About
-          </router-link>
-        </li>
-      </ul>
-      <!-- LOGIN COMPONENT HERE -->
-      <Login />
-    </div>
-    <div>      
-      <i class="mdi mdi-plus-circle-outline m-3" data-bs-toggle="modal" data-bs-target="#create-group"></i>
-    </div>  
-    <div class="dropdown show">
-      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-toggle="dropdown">Go To</a>      
 
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">        
-        <router-link :to="{name: 'Account'}">
+    <div>
+      <i
+        class="mdi mdi-plus-circle-outline m-3"
+        data-bs-toggle="modal"
+        data-bs-target="#create-group"
+      ></i>
+    </div>
+    <div class="show">
+      <i class="mdi mdi-cog"></i>
+      <a
+        class="dropdown-toggle"
+        href="#"
+        role="button"
+        id="dropdownMenuLink"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+        data-bs-toggle="dropdown"
+      ></a>
+
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <router-link :to="{ name: 'Account' }">
+          <Login />
           <span class="dropdown-item">My Account</span>
-        </router-link>       
+        </router-link>
         <a class="dropdown-item">Something Else</a>
       </div>
     </div>
-    
-      
-     
-    
   </nav>
 </template>
 
@@ -69,5 +67,8 @@ a:hover {
   border-bottom: 2px solid var(--bs-success);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+}
+.mdi {
+  font-size: 25px;
 }
 </style>
