@@ -1,11 +1,11 @@
 <template>
-    <div class="container-fluid" v-if="myContent">
+    <div class="container-fluid" v-if="groupContents">
       <div class="row">
         <div class="col-12">
           <div class="card m-3">
-            <img class="card-img-top" :src="myContent.imageurl" alt="Card image cap">
+            <img class="card-img-top" :src="groupContents.imageurl" alt="Card image cap">
             <div class="card-body">
-              <h6 class="card-title">{{myContent.title}}</h6>
+              <h6 class="card-title">{{groupContents.title}}</h6>
             </div>    
           </div>
         </div>
@@ -20,11 +20,11 @@ import { Content } from "../models/Content";
 
 export default {
   props: {
-    myContent: {type: Object , required: true}
+    groupContents: {type: Object, required: true}
   },
     setup() {
         return {
-          // myContent: computed(() => AppState.myContent),
+          // groupContents: computed(() => AppState.groupContents),
         };
     },
 };

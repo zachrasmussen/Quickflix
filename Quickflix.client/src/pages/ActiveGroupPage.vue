@@ -12,6 +12,13 @@
   <div class="container-fluid">
     <div class="row d-flex justify-content-center">
       <h4 class="m-2 text-center">{{ activeGroup.name }}</h4>
+      <button
+        class="col-6 p-2 btn btn-primary text-white"
+        @click="displayUrl()"
+      >
+        Add Group Member
+      </button>
+      <p id="url"></p>
 
       <button
         class="col-4 btn btn-primary text-white"
@@ -21,7 +28,7 @@
         Join Group
       </button>
 
-      <div v-for="a in activeGroupMembers">
+      <div v-for="a in activeGroupMembers" class="col-2 p-1">
         <img
           class="img-fluid group-member-name rounded-circle"
           :src="a.profile.picture"
@@ -29,8 +36,8 @@
         />
       </div>
       <!-- get content cards for group -->
-      <div v-for="m in myContent" :key="m.id" class="col-12">
-        <GroupContentCard :myContent="m" />
+      <div v-for="m in groupContents" :key="m.id" class="col-12">
+        <GroupContentCard :groupContents="m" />
       </div>
     </div>
   </div>
@@ -67,9 +74,7 @@ import { AppState } from '../AppState';
 import ContentCard from "../components/ContentCard.vue";
 
 export default {
-  // props: {
-  //   myContent: {type: Object, required: true}
-  // },
+
 
   setup() {
     const route = useRoute();
@@ -109,7 +114,7 @@ export default {
     });
 
     return {
-      contents: computed(() => AppState.groupContents),
+      groupContents: computed(() => AppState.groupContents),
       activeGroup: computed(() => AppState.activeGroup),
       activeGroupMembers: computed(() => AppState.activeGroupMembers),
       alreadyJoined: computed(() => {
@@ -128,6 +133,13 @@ export default {
         } catch (error) {
           logger.log(error)
         }
+      },
+      async displayUrl() {
+        // document.getElementById("url").innerHTML = window.location.href;
+        // navigator.clipboard.writeText(copyText.value);
+        navigator.clipboard.writeText('http://localhost:8080/#/' + route.fullPath);
+
+        // alert("Copied the group");
       }
     };
   },
