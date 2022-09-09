@@ -36,8 +36,8 @@
         />
       </div>
       <!-- get content cards for group -->
-      <div v-for="m in myContent" :key="m.id" class="col-12">
-        <GroupContentCard :myContent="m" />
+      <div v-for="m in groupContents" :key="m.id" class="col-12">
+        <GroupContentCard :groupContents="m" />
       </div>
     </div>
   </div>
@@ -74,9 +74,7 @@ import { AppState } from '../AppState';
 import ContentCard from "../components/ContentCard.vue";
 
 export default {
-  // props: {
-  //   myContent: {type: Object, required: true}
-  // },
+
 
   setup() {
     const route = useRoute();
@@ -116,7 +114,7 @@ export default {
     });
 
     return {
-      contents: computed(() => AppState.groupContents),
+      groupContents: computed(() => AppState.groupContents),
       activeGroup: computed(() => AppState.activeGroup),
       activeGroupMembers: computed(() => AppState.activeGroupMembers),
       alreadyJoined: computed(() => {
