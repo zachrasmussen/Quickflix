@@ -12,6 +12,13 @@
   <div class="container-fluid">
     <div class="row d-flex justify-content-center">
       <h4 class="m-2 text-center">{{ activeGroup.name }}</h4>
+      <button
+        class="col-6 p-2 btn btn-primary text-white"
+        @click="displayUrl()"
+      >
+        Add Group Member
+      </button>
+      <p id="url"></p>
 
       <button
         class="col-4 btn btn-primary text-white"
@@ -21,7 +28,7 @@
         Join Group
       </button>
 
-      <div v-for="a in activeGroupMembers">
+      <div v-for="a in activeGroupMembers" class="col-2 p-1">
         <img
           class="img-fluid group-member-name rounded-circle"
           :src="a.profile.picture"
@@ -128,6 +135,13 @@ export default {
         } catch (error) {
           logger.log(error)
         }
+      },
+      async displayUrl() {
+        // document.getElementById("url").innerHTML = window.location.href;
+        // navigator.clipboard.writeText(copyText.value);
+        navigator.clipboard.writeText('http://localhost:8080/#/' + route.fullPath);
+
+        // alert("Copied the group");
       }
     };
   },
