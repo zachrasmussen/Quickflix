@@ -15,7 +15,7 @@
 
       <button
         class="col-4 btn btn-primary text-white"
-        v-if="alreadyJoined"
+        v-if="!alreadyJoined"
         @click="joinGroup()"
       >
         Join Group
@@ -112,6 +112,12 @@ export default {
       contents: computed(() => AppState.groupContents),
       activeGroup: computed(() => AppState.activeGroup),
       activeGroupMembers: computed(() => AppState.activeGroupMembers),
+      alreadyJoined: computed(() => {
+        if (AppState.activeGroupMembers.find(a => a.accountId == AppState.account.id)) {
+          return true
+        }
+        return false
+      }),
       myContent: computed(() => AppState.myContent),
       async joinGroup() {
         try {
