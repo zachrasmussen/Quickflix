@@ -1,35 +1,54 @@
 <template>
-  <div v-if="content">
-    
-    <img
-    class="p-0 img-default img-fluid"
-    
-    :src="enhance(content.imageurl, 3)"
-    alt="" 
-    />
-    <h3 class="title-font text-center my-2">{{ content.title }}</h3>
-    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg">Details</button>
-    <DetailsCard/>
-    <div v-for="g in genres">
-      <GenreButton :genre="g" />
-    </div>
-    <div v-for="t in types">
-      <TypeButton :type="t" />
-      </div>
-      <div class="d-flex justify-content-between mt-5">
-        <h1 class="bg-danger rounded-circle p-4" @click="nextMovie()">👎🏼</h1>
-        <h1
-        class="bg-success rounded-circle p-4"
-        @click="createContent([body]), nextMovie()"
-        >
-        👍🏼
-      </h1>
-    </div>
+<div v-if="content">
+  
+  <img
+  class="p-0 img-default img-fluid ms-2"
+  
+  :src="enhance(content.imageurl, 3)"
+  alt="" 
+  />
+  <h3 class="title-font text-center my-2">{{ content.title }}</h3>
+  
+  <div class="d-flex justify-content-around" >
+  <button type="button" class="btn btn-secondary m-2" data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg">Details</button>
+  <DetailsCard/>
+  <button class="btn btn-secondary m-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">FILTER</button>
+</div>
+
+
+
+
+
+  
+  
+    <div class="d-flex justify-content-evenly mt-2">
+      <h1 class="bg-danger rounded-circle p-4" @click="nextMovie()">👎🏼</h1>
+      <h1
+      class="bg-success rounded-circle p-4"
+      @click="createContent([body]), nextMovie()"
+      >
+      👍🏼
+    </h1>
   </div>
+</div>
+<div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
+<div class="offcanvas-header">
+  <h5 class="offcanvas-title" id="offcanvasBottomLabel">FILTERS</h5>
+  <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+</div>
+<div class="offcanvas-body small">
+  <div v-for="g in genres">
+    <GenreButton :genre="g" />
+  </div>
+  <div v-for="t in types">
+    <TypeButton :type="t" />
+    </div>
+ </div>
+</div>
+
+</template>
   
-  </template>
-  
-  <script>
+<script>
 import { computed } from "@vue/reactivity"
 import { onMounted } from "vue";
 import { routeLocationKey, useRoute } from "vue-router";
@@ -109,12 +128,12 @@ import DetailsCard from "./DetailsCard.vue";
 }
   </script>
   
-  <style>
+<style>
     .img-default {
     background-image: url('https://www.prokerala.com/movies/assets/img/no-poster-available.jpg');
     background-position: center;
     background-size: cover;
-    height: 800px;
+    height: 600px;
     width: 360px;
     
   }

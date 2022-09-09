@@ -3,8 +3,9 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content" >
       <div class="text-center">
-     <h3>{{content.title}}</h3> <b>{{content.imbdrating}}</b>
-     <p>{{content.synopsis}}</p>
+     <h3>{{content.title}}</h3> <b>Rating:{{content.imdbrating}}</b>
+     <p><b>{{content.genre[0]}}</b></p>
+     <p><b>{{content.synopsis}}</b></p>
     
     
     </div>
