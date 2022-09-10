@@ -29,9 +29,9 @@
     </div>
 
     <div class="d-flex justify-content-evenly mt-2">
-      <h1 class="bg-danger rounded-circle p-4" @click="nextMovie()">👎🏼</h1>
+      <h1 class="bg-danger rounded-circle p-4 selectable" @click="nextMovie()">👎🏼</h1>
       <h1
-        class="bg-success rounded-circle p-4"
+        class="bg-success rounded-circle p-4 selectable"
         @click="createContent([body]), nextMovie()"
       >
         👍🏼

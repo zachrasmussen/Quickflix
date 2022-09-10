@@ -1,16 +1,12 @@
 <template>
-    <div class="container-fluid" v-if="groupContents">
-      <div class="row">
-        <div class="col-12">
-          <div class="card m-3">
-            <img class="card-img-top" :src="groupContents.imageurl" alt="Card image cap">
-            <div class="card-body">
-              <h6 class="card-title">{{groupContents.title}}</h6>
-            </div>    
-          </div>
+    <div class="" v-if="groupContents">
+      <div class="d-flex justify-content-center">
+        <div class="col-md-3 m-3">
+          <img class="customImg" :src="groupContents.imageurl" alt="Card image cap">
+          <h6 class="">{{groupContents.title}}</h6>
         </div>
       </div>
-    </div>    
+    </div>
 </template>
 
 <script>
@@ -31,4 +27,10 @@ export default {
 </script>
 
 <style>
+      .customImg {
+ 
+    height: 600px;
+    width: 360px;
+    
+  }
 </style>

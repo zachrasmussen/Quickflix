@@ -36,7 +36,7 @@
         />
       </div>
       <!-- get content cards for group -->
-      <div v-for="m in groupContents" :key="m.id" class="col-12">
+      <div v-for="m in groupContents" :key="m.id" class="">
         <GroupContentCard :groupContents="m" />
       </div>
     </div>
@@ -56,10 +56,11 @@
         aria-label="Close"
       ></button>
     </div>
-    <div class="offcanvas-body">
-      <ContentCard />
-    </div>
+    <div class="offcanvas-body" v-for="c in content" :key="c.id">
+      <ContentCard :content="c"/>
   </div>
+  
+    </div>
 </template>
 
 <script>
@@ -124,6 +125,7 @@ export default {
         return false
       }),
       myContent: computed(() => AppState.myContent),
+      content: computed(()=> AppState.contents),
       async joinGroup() {
         try {
           let newMember = {
