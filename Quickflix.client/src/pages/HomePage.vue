@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid" v-if="content">
     <div class="row">
-      <div class="">
+      <div class=" d-flex justify-content-center">
       <ContentCard :content="c"/>
      </div>
 
