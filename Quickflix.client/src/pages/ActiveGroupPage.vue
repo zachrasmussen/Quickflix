@@ -59,8 +59,8 @@
         aria-label="Close"
       ></button>
     </div>
-    <div class="offcanvas-body" v-for="c in content" :key="c.id">
-      <ContentCard :content="c"/>
+    <div class="offcanvas-body" >
+      <ContentCard />
   </div>
   
     </div>
@@ -92,6 +92,16 @@ export default {
         Pop.toast(error.message, "error");
       }
     }
+    async function getContent() {
+      try {
+        await contentService.getContent();
+      }
+      catch (error) {
+        logger.error("[Getting Movies]", error);
+        Pop.error(error);
+      }
+    }
+    
 
     async function getContentByGroupId() {
       try {
@@ -115,6 +125,7 @@ export default {
       getGroupById();
       getContentByGroupId();
       getGroupMembersByGroupId();
+      getContent();
     });
 
     return {

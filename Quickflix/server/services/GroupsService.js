@@ -5,8 +5,11 @@ import { dbContext } from "../db/DbContext"
 class GroupsService {
   async getYourGroups(accountId) {
     const groups = await dbContext.Groups.find({ creatorId: accountId }).populate('group') // creatorId = Schema, accountId=parameter being passed in
+    const groupMembers = await dbContext.GroupMembers.find({accountId}).populate('group')
+    // @ts-ignore
+    const groupsImIn = groupMembers.map(gm => gm.group)
     logger.log(groups)
-    return groups
+    return [...groups, ...groupsImIn]
   }
   async editGroup(groupData, id, userId) {
     const group = await this.getGroupById(id)

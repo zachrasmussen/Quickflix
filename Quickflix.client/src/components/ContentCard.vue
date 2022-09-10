@@ -81,18 +81,7 @@ export default {
   // },
   setup() {
     const route = useRoute();
-    //     async function getContent() {
-    //   try {
-    //     await contentService.getContent();
-    //   }
-    //   catch (error) {
-    //     logger.error("[Getting Movies]", error);
-    //     Pop.error(error);
-    //   }
-    // }
-    //     onMounted(() => {
-    //   getContent();
-    // });
+
     return {
       genres: computed(() => AppState.genres),
       types: computed(() => AppState.types),
