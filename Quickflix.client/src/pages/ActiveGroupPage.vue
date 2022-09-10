@@ -1,49 +1,66 @@
 <template>
-  <button
-    class="btn btn-secondary p-2 m-2"
-    type="button"
-    data-bs-toggle="offcanvas"
-    data-bs-target="#offcanvasTop"
-    aria-controls="offcanvasTop"
-  >
-    Find
-  </button>
+  <section class="container-fluid">
+    <div class="row">
+      <div class="col-12 d-flex justify-content-between p-4">
+        <button
+          class="text-primary"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasTop"
+          aria-controls="offcanvasTop"
+        >
+          <i class="icon mdi mdi-television"></i>
+        </button>
 
-  <div class="container-fluid">
-    <div class="row d-flex justify-content-center">
-      <h4 class="m-2 text-center">{{ activeGroup.name }}</h4>
-      <button
-        class="col-6 p-2 btn btn-primary text-white"
-        @click="displayUrl()"
-      >
-        Add Group Member
-      </button>
-      <p id="url"></p>
+        <h4 class="m-2 text-center title-font">{{ activeGroup.name }}</h4>
 
-      <button
-        class="col-4 btn btn-primary text-white"
-        v-if="!alreadyJoined"
-        @click="joinGroup()"
-      >
-        Join Group
-      </button>
+        <button
+          type="button"
+          class="text-primary"
+          data-bs-container="body"
+          data-bs-toggle="popover"
+          data-bs-placement="top"
+          data-bs-content="Copied!"
+          @click="displayUrl()"
+        >
+          <i class="add-member mdi mdi-link"></i>
+        </button>
 
-      <div
-        v-for="a in activeGroupMembers"
-        class="col-1 p-1 d-flex justify-content-evenly"
-      >
+        <!-- <p id="url"></p> -->
+      </div>
+    </div>
+  </section>
+  <section class="d-flex justify-content-center">
+    <button
+      class="col-4 col-md-2 btn btn-primary text-white"
+      v-if="!alreadyJoined"
+      @click="joinGroup()"
+    >
+      Join Group
+    </button>
+  </section>
+  <section class="d-flex justify-content-center m-5">
+    <div class="col-12 col-md-5 p-3 card elevation-2">
+      <div>
+        <h5 class="text-center border-bottom pb-3">
+          {{ activeGroup.name }} Group Members
+        </h5>
+
         <img
-          class="img-fluid group-member-name rounded-circle"
+          v-for="a in activeGroupMembers"
+          class="img-fluid group-member-name rounded-circle m-1 my-2"
           :src="a.profile.picture"
+          :title="a.profile.name"
           alt=""
         />
       </div>
-      <!-- get content cards for group -->
-      <div v-for="m in groupContents" :key="m.id" class="">
-        <GroupContentCard :groupContents="m" />
-      </div>
     </div>
+  </section>
+  <!-- get content cards for group -->
+  <div v-for="m in groupContents" :key="m.id" class="">
+    <GroupContentCard :groupContents="m" />
   </div>
+
   <div
     class="offcanvas offcanvas-end"
     tabindex="-1"
@@ -59,11 +76,10 @@
         aria-label="Close"
       ></button>
     </div>
-    <div class="offcanvas-body" >
+    <div class="offcanvas-body">
       <ContentCard />
-  </div>
-  
     </div>
+  </div>
 </template>
 
 <script>
@@ -101,7 +117,7 @@ export default {
         Pop.error(error);
       }
     }
-    
+
 
     async function getContentByGroupId() {
       try {
@@ -120,7 +136,7 @@ export default {
       }
     }
 
-    async function getDuplicates(){
+    async function getDuplicates() {
       try {
         await groupsService.getDuplicates(route.params.groupId)
       } catch (error) {
@@ -149,7 +165,7 @@ export default {
         return false
       }),
       myContent: computed(() => AppState.myContent),
-      content: computed(()=> AppState.contents),
+      content: computed(() => AppState.contents),
       async joinGroup() {
         try {
           let newMember = {
@@ -166,9 +182,7 @@ export default {
         navigator.clipboard.writeText('http://localhost:8080/#' + route.fullPath);
 
         // alert("Copied the group");
-
-
-      }
+      },
     };
   },
   components: { GroupContentCard, ContentCard }
@@ -178,6 +192,22 @@ export default {
 .group-member-name {
   width: 55px;
   height: 55px;
+}
+.title-font {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.5em;
+  font-weight: 700;
+}
+.add-member {
+  font-size: 2em;
+}
+button {
+  padding: 0;
+  border: none;
+  background: none;
+}
+.icon {
+  font-size: 2em;
 }
 </style>
 

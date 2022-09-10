@@ -5,14 +5,15 @@
       :src="enhance(content.imageurl, 3)"
       alt=""
     />
-    <h3 class="title-font text-center my-2">{{ content.title }}</h3>
+
+    <h3 class="title-font text-center my-3 title-font">{{ content.title }}</h3>
 
     <div class="d-flex justify-content-around">
       <button
         type="button"
         class="btn btn-secondary m-2"
         data-bs-toggle="modal"
-        data-bs-target=".bd-example-modal-lg"
+        data-bs-target="#exampleModal"
       >
         Details
       </button>
@@ -29,7 +30,9 @@
     </div>
 
     <div class="d-flex justify-content-evenly mt-2">
-      <h1 class="bg-danger rounded-circle p-4 selectable" @click="nextMovie()">👎🏼</h1>
+      <h1 class="bg-danger rounded-circle p-4 selectable" @click="nextMovie()">
+        👎🏼
+      </h1>
       <h1
         class="bg-success rounded-circle p-4 selectable"
         @click="createContent([body]), nextMovie()"
@@ -140,5 +143,10 @@ export default {
   background-size: cover;
   height: 600px;
   width: 360px;
+}
+.title-font {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.5em;
+  font-weight: 700;
 }
 </style>

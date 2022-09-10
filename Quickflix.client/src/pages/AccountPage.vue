@@ -4,25 +4,23 @@
     <img class="rounded" :src="account.picture" alt="" />
     <p>{{ account.email }}</p>
   </div>
-  <div>
-    <h4>My groups</h4> 
+  <div class="">
     <nav>
-      <div v-for="g in groups" :key="g.id">
-        <router-link :to="{name: 'ActiveGroup', params: {groupId: g.id}}">
-          <p >{{g.name}}</p>
+      <h4 class="text-center">My Groups</h4>
+      <div class="px-5 mt-3 border-bottom" v-for="g in groups" :key="g.id">
+        <router-link :to="{ name: 'ActiveGroup', params: { groupId: g.id } }">
+          <p>{{ g.name }}</p>
         </router-link>
-      </div>  
-    </nav>   
-        
-    </div>
- 
+      </div>
+    </nav>
+  </div>
 </template>
 
 <script>
 import { computed, onMounted } from 'vue'
 import { AppState } from '../AppState'
 import { accountService } from '../services/AccountService'
-import {logger} from '../utils/Logger'
+import { logger } from '../utils/Logger'
 import Pop from '../utils/Pop'
 
 
