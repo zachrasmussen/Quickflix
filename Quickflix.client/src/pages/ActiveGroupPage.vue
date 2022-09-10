@@ -28,7 +28,10 @@
         Join Group
       </button>
 
-      <div v-for="a in activeGroupMembers" class="col-2 p-1">
+      <div
+        v-for="a in activeGroupMembers"
+        class="col-1 p-1 d-flex justify-content-evenly"
+      >
         <img
           class="img-fluid group-member-name rounded-circle"
           :src="a.profile.picture"
