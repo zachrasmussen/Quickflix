@@ -120,12 +120,22 @@ export default {
       }
     }
 
+    async function getDuplicates(){
+      try {
+        await groupsService.getDuplicates(route.params.groupId)
+      } catch (error) {
+        logger.error(error)
+        Pop.toast(error.message, 'error')
+      }
+    }
+
 
     onMounted(async () => {
-      getGroupById();
-      getContentByGroupId();
-      getGroupMembersByGroupId();
-      getContent();
+      await getGroupById();
+      await getContentByGroupId();
+      await getGroupMembersByGroupId();
+      await getContent();
+      await getDuplicates();
     });
 
     return {
@@ -156,6 +166,8 @@ export default {
         navigator.clipboard.writeText('http://localhost:8080/#' + route.fullPath);
 
         // alert("Copied the group");
+
+
       }
     };
   },

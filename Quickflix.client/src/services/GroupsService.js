@@ -26,6 +26,38 @@ class GroupsService {
         logger.log('creating new member from the service', res.data)
         AppState.activeGroupMembers.push(res.data)
     }
+
+    async getDuplicates() {
+        let dict = {}
+        AppState.groupContents.forEach(x => {
+            if (dict[x.imdbid] != null){
+                dict[x.imdbid] ++
+               
+            }
+            else {
+                dict[x.imdbid] = 1
+              
+            }
+            
+        })
+        // logger.log(dict, 'what is in the dict')
+        let duplicateArray = []
+        for(let x in dict) {
+            logger.log(x, 'what is x')
+            if (dict[x] > 1) {duplicateArray.push(x)}
+        }
+        logger.log('duplicates', duplicateArray)
+        AppState.groupContents.forEach(x => {
+            if (duplicateArray.indexOf(x.imdbid) != -1) {
+                AppState.duplicateContent.push(x)
+            }
+        })
+        duplicateArray.forEach(x => {
+            let banana = AppState.duplicateContent.map(y => y.imdbid == x)
+            logger.log(banana, "banana")
+        })
+        console.log("duplicate content", AppState.duplicateContent)
+    }
 }
 
 

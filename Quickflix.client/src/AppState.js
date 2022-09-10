@@ -28,6 +28,8 @@ export const AppState = reactive({
 
   activeGroupMembers: [],
 
+  duplicateContent: [],
+
   filters: {
     genre: [],
     language: [],
