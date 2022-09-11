@@ -1,45 +1,53 @@
 <template>
   <div v-if="content">
     <img
-      class="p-0 img-default img-fluid ms-2"
+      class="p-0 img-default img-fluid mx-1"
       :src="enhance(content.imageurl, 3)"
       alt=""
     />
-
-    <h3 class="title-font text-center my-3 title-font">{{ content.title }}</h3>
-
-    <div class="d-flex justify-content-around">
-      <button
-        type="button"
-        class="btn btn-secondary m-2"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
-      >
-        Details
-      </button>
-      <DetailsCard />
-      <button
-        class="btn btn-secondary m-2"
-        type="button"
-        data-bs-toggle="offcanvas"
-        data-bs-target="#offcanvasBottom"
-        aria-controls="offcanvasBottom"
-      >
-        Filter
-      </button>
-    </div>
-
-    <div class="d-flex justify-content-evenly mt-2">
-      <h1 class="bg-danger rounded-circle p-4 selectable" @click="nextMovie()">
-        👎🏼
-      </h1>
-      <h1
-        class="bg-success rounded-circle p-4 selectable"
-        @click="createContent([body]), nextMovie()"
-      >
-        👍🏼
-      </h1>
-    </div>
+    <section class="container-fluid">
+      <div class="row border-bottom">
+        <div class="col-12 d-flex justify-content-between">
+          <button
+            type="button"
+            class="m-2 details-filter-icon"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            <i class="icon mdi mdi-page-next-outline"></i>
+          </button>
+          <DetailsCard />
+          <h3 class="title-font text-center my-4 title-font">
+            {{ content.title }}
+          </h3>
+          <button
+            class="m-2 details-filter-icon"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasBottom"
+            aria-controls="offcanvasBottom"
+          >
+            <i class="icon mdi mdi-dots-horizontal-circle-outline"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+    <section class="row my-3">
+      <div class="d-flex justify-content-between mt-2 px-4">
+        <h1
+          class="bg-danger rounded-circle p-4 selectable"
+          @click="nextMovie()"
+        >
+          👎🏼
+        </h1>
+        <h1
+          class="bg-success rounded-circle p-4 selectable"
+          @click="createContent([body]), nextMovie()"
+        >
+          👍🏼
+        </h1>
+      </div>
+    </section>
   </div>
   <div
     class="offcanvas offcanvas-bottom"
@@ -146,7 +154,15 @@ export default {
 }
 .title-font {
   font-family: "Montserrat", sans-serif;
-  font-size: 1.5em;
+  font-size: 1.25em;
   font-weight: 700;
+}
+.icon {
+  font-size: 1.25em;
+}
+.details-filter-icon {
+  padding: 0;
+  border: none;
+  background: none;
 }
 </style>
