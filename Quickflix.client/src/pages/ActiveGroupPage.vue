@@ -1,4 +1,5 @@
 <template>
+  <!-- SECTION this section is for the group name, to select movies for the group and the link -->
   <section class="container-fluid">
     <div class="row">
       <div class="col-12 d-flex justify-content-between p-4">
@@ -30,6 +31,8 @@
       </div>
     </div>
   </section>
+
+  <!-- SECTION this section is for the the button to join the group -->
   <section class="d-flex justify-content-center">
     <button
       class="col-4 col-md-2 btn btn-primary text-white"
@@ -39,6 +42,8 @@
       Join Group
     </button>
   </section>
+
+  <!-- SECTION this section is to display the members of the group -->
   <section class="d-flex justify-content-center m-5">
     <div class="col-12 col-md-5 p-3 card elevation-2">
       <div>
@@ -56,7 +61,7 @@
       </div>
     </div>
   </section>
-  <!-- get content cards for group -->
+  <!-- SECTION this section is to display the content of the group -->
   <div v-for="m in groupContents" :key="m.id" class="">
     <GroupContentCard :groupContents="m" />
   </div>

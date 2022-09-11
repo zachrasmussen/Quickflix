@@ -1,19 +1,37 @@
 <template>
-  <div class="about text-center">
-    <h1>Welcome {{ account.name }}</h1>
-    <img class="rounded" :src="account.picture" alt="" />
-    <p>{{ account.email }}</p>
-  </div>
-  <div class="">
-    <nav>
-      <h4 class="text-center">My Groups</h4>
-      <div class="px-5 mt-3 border-bottom" v-for="g in groups" :key="g.id">
-        <router-link :to="{ name: 'ActiveGroup', params: { groupId: g.id } }">
-          <p>{{ g.name }}</p>
-        </router-link>
+  <!-- TODO make this part mobile responsive. -->
+  <section class="container-fluid">
+    <div class="row">
+      <div class="col-12 d-flex justify-content-evenly m-5">
+        <!-- SECTION this section is to show which groups you are a part of -->
+        <div class="col-4">
+          <div class="p-3 card elevation-2">
+            <nav>
+              <h4 class="text-center border-bottom pb-3">My Groups</h4>
+              <div
+                class="px-5 mt-3 border-bottom"
+                v-for="g in groups"
+                :key="g.id"
+              >
+                <router-link
+                  :to="{ name: 'ActiveGroup', params: { groupId: g.id } }"
+                >
+                  <p>{{ g.name }}</p>
+                </router-link>
+              </div>
+            </nav>
+          </div>
+        </div>
+        <!-- SECTION this section is to show your account -->
+        <div class="col-3 text-center">
+          <h3>Welcome {{ account.name }}</h3>
+          <div class="col-3">
+            <Login />
+          </div>
+        </div>
       </div>
-    </nav>
-  </div>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -52,6 +70,15 @@ export default {
 <style scoped>
 img {
   max-width: 100px;
+}
+
+.pro-pic {
+  height: 55px;
+  width: 55px;
+}
+
+login:hover {
+  cursor: pointer;
 }
 </style>
 

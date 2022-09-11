@@ -20,7 +20,7 @@
             :src="account.picture || user.picture"
             alt="account photo"
             height="40"
-            class="rounded"
+            class="rounded-circle"
           />
           <span class="mx-3 text-black lighten-30">{{
             account.name || user.name
@@ -81,6 +81,16 @@ export default {
   transform: scale(1);
 }
 .hoverable {
+  cursor: pointer;
+}
+.mdi {
+  font-size: 25px;
+}
+.mdi:hover {
+  cursor: pointer;
+}
+
+.login-select:hover {
   cursor: pointer;
 }
 </style>
