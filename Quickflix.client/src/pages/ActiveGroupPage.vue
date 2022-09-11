@@ -1,7 +1,7 @@
 <template>
-  <!-- SECTION this section is for the group name, to select movies for the group and the link -->
   <section class="container-fluid">
-    <div class="row">
+    <!-- SECTION this section is for the group name, to select movies for the group and the link -->
+    <section class="row">
       <div class="col-12 d-flex justify-content-between p-4">
         <button
           class="text-primary"
@@ -29,62 +29,62 @@
 
         <!-- <p id="url"></p> -->
       </div>
+    </section>
+
+    <!-- SECTION this section is for the the button to join the group -->
+    <section class="row d-flex justify-content-center">
+      <button
+        class="col-4 col-md-2 btn btn-primary text-white"
+        v-if="!alreadyJoined"
+        @click="joinGroup()"
+      >
+        Join Group
+      </button>
+    </section>
+
+    <!-- SECTION this section is to display the members of the group -->
+    <section class="row d-flex justify-content-center m-3">
+      <div class="col-12 col-md-5 p-2 card elevation-2">
+        <div>
+          <h5 class="text-center border-bottom pb-3">
+            {{ activeGroup.name }} Group Members
+          </h5>
+
+          <img
+            v-for="a in activeGroupMembers"
+            class="img-fluid group-member-name rounded-circle m-1 my-2"
+            :src="a.profile.picture"
+            :title="a.profile.name"
+            alt=""
+          />
+        </div>
+      </div>
+    </section>
+    <!-- SECTION this section is to display the content of the group -->
+    <div v-for="m in groupContents" :key="m.id" class="">
+      <GroupContentCard :groupContents="m" />
     </div>
-  </section>
 
-  <!-- SECTION this section is for the the button to join the group -->
-  <section class="d-flex justify-content-center">
-    <button
-      class="col-4 col-md-2 btn btn-primary text-white"
-      v-if="!alreadyJoined"
-      @click="joinGroup()"
+    <div
+      class="offcanvas offcanvas-end"
+      tabindex="-1"
+      id="offcanvasTop"
+      aria-labelledby="offcanvasTopLabel"
     >
-      Join Group
-    </button>
-  </section>
-
-  <!-- SECTION this section is to display the members of the group -->
-  <section class="d-flex justify-content-center m-5">
-    <div class="col-12 col-md-5 p-3 card elevation-2">
-      <div>
-        <h5 class="text-center border-bottom pb-3">
-          {{ activeGroup.name }} Group Members
-        </h5>
-
-        <img
-          v-for="a in activeGroupMembers"
-          class="img-fluid group-member-name rounded-circle m-1 my-2"
-          :src="a.profile.picture"
-          :title="a.profile.name"
-          alt=""
-        />
+      <div class="offcanvas-header">
+        <h5 id="offcanvasTopLabel">Find</h5>
+        <button
+          type="button"
+          class="btn-close text-reset"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <ContentCard />
       </div>
     </div>
   </section>
-  <!-- SECTION this section is to display the content of the group -->
-  <div v-for="m in groupContents" :key="m.id" class="">
-    <GroupContentCard :groupContents="m" />
-  </div>
-
-  <div
-    class="offcanvas offcanvas-end"
-    tabindex="-1"
-    id="offcanvasTop"
-    aria-labelledby="offcanvasTopLabel"
-  >
-    <div class="offcanvas-header">
-      <h5 id="offcanvasTopLabel">Find</h5>
-      <button
-        type="button"
-        class="btn-close text-reset"
-        data-bs-dismiss="offcanvas"
-        aria-label="Close"
-      ></button>
-    </div>
-    <div class="offcanvas-body">
-      <ContentCard />
-    </div>
-  </div>
 </template>
 
 <script>

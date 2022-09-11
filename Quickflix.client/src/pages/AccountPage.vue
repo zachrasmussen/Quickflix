@@ -1,11 +1,11 @@
 <template>
   <!-- TODO make this part mobile responsive. -->
-  <section class="container-fluid">
+  <section class="container-fluid bg-light">
     <div class="row">
-      <div class="col-12 d-flex justify-content-evenly m-5">
+      <div class="col-12 col-md-12 d-flex justify-content-evenly m-3">
         <!-- SECTION this section is to show which groups you are a part of -->
-        <div class="col-4">
-          <div class="p-3 card elevation-2">
+        <div class="col-6 col-md-4">
+          <div class="p-2 card elevation-2">
             <nav>
               <h4 class="text-center border-bottom pb-3">My Groups</h4>
               <div
@@ -23,7 +23,7 @@
           </div>
         </div>
         <!-- SECTION this section is to show your account -->
-        <div class="col-3 text-center">
+        <div class="col-6 col-md-3 text-center">
           <h3>Welcome {{ account.name }}</h3>
           <div class="col-3">
             <Login />
