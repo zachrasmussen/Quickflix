@@ -1,5 +1,5 @@
 <template>
-  <section class="container-fluid">
+  <section class="container-fluid background-height">
     <!-- SECTION this section is for the group name, to select movies for the group and the link -->
     <section class="row">
       <div class="col-12 d-flex justify-content-between p-4">
@@ -213,6 +213,11 @@ button {
 }
 .icon {
   font-size: 2em;
+}
+.background-height {
+  max-height: 100%;
+  min-height: 100vh;
+  background-color: #f1f2f7;
 }
 </style>
 
