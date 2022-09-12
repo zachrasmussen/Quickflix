@@ -46,43 +46,16 @@
               data-bs-target="#create-group"
             ></i>
           </div>
-          <!-- SECTION this is a duplicate way to get to the account page. Replaced it with the login so we only have one option that does multiple things. -->
-          <div class="show">
-            <i class="mdi mdi-cog"></i>
-            <a
-              class="dropdown-toggle"
-              href="#"
-              role="button"
-              id="dropdownMenuLink"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-              data-bs-toggle="dropdown"
-            ></a>
 
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <router-link :to="{ name: 'Account' }">
-                <span class="dropdown-item">My Account</span>
-              </router-link>
-              <a class="dropdown-item">Something Else</a>
-            </div>
+          <div>
+            <router-link class="mdi mdi-cog m-3" :to="{ name: 'Account' }">
+              <i
+                class=""
+                data-bs-toggle="modal"
+                data-bs-target="#create-group"
+              ></i>
+            </router-link>
           </div>
-          <!-- SECTION end of the duplicate account link section -->
-          <!-- SECTION this is where the manage account/logout button is -->
-          <!-- <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarText"
-            aria-controls="navbarText"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          ></button>
-          <div class="collapse navbar-collapse" id="navbarText">
-            LOGIN COMPONENT HERE
-            <Login />
-          </div> -->
-          <!-- SECTION end of section -->
         </div>
       </div>
     </nav>

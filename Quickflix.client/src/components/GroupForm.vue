@@ -23,7 +23,9 @@
               aria-describedby="groupName"
               placeholder="Group Name"
             />
-            <button class="btn btn-secondary m-2">Create Group</button>
+            <button class="btn button-color text-white m-2">
+              Create Group
+            </button>
           </div>
         </form>
       </div>
@@ -57,4 +59,7 @@ export default {
 </script>
 
 <style>
+.button-color {
+  background-color: #0096fa;
+}
 </style>

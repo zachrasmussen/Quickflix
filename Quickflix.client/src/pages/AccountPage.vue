@@ -6,7 +6,14 @@
         <!-- SECTION this section is to show which groups you are a part of -->
         <div class="col-10 col-md-4 order-2 order-md-1 mt-3">
           <div class="p-2 card elevation-2">
-            <h4 class="text-center py-3">My Groups</h4>
+            <h4 class="text-center py-3 title-font">
+              My Groups
+              <i
+                class="mdi mdi-plus-circle-outline create-group"
+                data-bs-toggle="modal"
+                data-bs-target="#create-group"
+              ></i>
+            </h4>
             <div class="px-5 pt-3 border-top" v-for="g in groups" :key="g.id">
               <router-link
                 :to="{ name: 'ActiveGroup', params: { groupId: g.id } }"
@@ -25,10 +32,10 @@
             mt-3
             card card-height
             elevation-2
-            py-3
+            py-4
           "
         >
-          <h3>Welcome</h3>
+          <h3 class="title-font">Welcome</h3>
           <Login />
         </div>
       </div>
@@ -88,6 +95,18 @@ login:hover {
 .background-height {
   height: 100%;
   background-color: #f1f2f7;
+}
+.title-font {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.5em;
+  font-weight: 700;
+}
+.create-group {
+  font-size: 25px;
+  color: #0096fa;
+}
+.create-group:hover {
+  cursor: pointer;
 }
 </style>
 
