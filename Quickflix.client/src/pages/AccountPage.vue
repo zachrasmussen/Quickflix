@@ -2,27 +2,16 @@
   <!-- TODO make this part mobile responsive. -->
   <section class="container-fluid background-height">
     <div class="row">
-      <div class="col-12 col-md-12 d-flex justify-content-evenly m-3">
-        <!-- SECTION this section is to show which groups you are a part of -->
-        <div class="col-10 col-md-4 order-2 order-md-1 mt-3">
-          <div class="p-2 card elevation-2">
-            <h4 class="text-center py-3 title-font">
-              My Groups
-              <i
-                class="mdi mdi-plus-circle-outline create-group"
-                data-bs-toggle="modal"
-                data-bs-target="#create-group"
-              ></i>
-            </h4>
-            <div class="px-5 pt-3 border-top" v-for="g in groups" :key="g.id">
-              <router-link
-                :to="{ name: 'ActiveGroup', params: { groupId: g.id } }"
-              >
-                <p>{{ g.name }}</p>
-              </router-link>
-            </div>
-          </div>
-        </div>
+      <div
+        class="
+          col-12 col-md-12
+          d-flex
+          flex-column flex-md-row
+          justify-content-md-evenly
+          align-items-center align-items-md-start
+          mb-4
+        "
+      >
         <!-- SECTION this section is to show your account -->
         <div
           class="
@@ -37,6 +26,26 @@
         >
           <h3 class="title-font">Welcome</h3>
           <Login />
+        </div>
+        <!-- SECTION this section is to show which groups you are a part of -->
+        <div class="col-10 col-md-4 order-2 order-md-1 mt-3">
+          <div class="p-2 card elevation-2">
+            <h4 class="text-center py-3 title-font">
+              My Groups
+              <!-- <i
+                class="mdi mdi-plus-circle-outline create-group"
+                data-bs-toggle="modal"
+                data-bs-target="#create-group"
+              ></i> -->
+            </h4>
+            <div class="px-5 pt-3 border-top" v-for="g in groups" :key="g.id">
+              <router-link
+                :to="{ name: 'ActiveGroup', params: { groupId: g.id } }"
+              >
+                <p>{{ g.name }}</p>
+              </router-link>
+            </div>
+          </div>
         </div>
       </div>
     </div>
