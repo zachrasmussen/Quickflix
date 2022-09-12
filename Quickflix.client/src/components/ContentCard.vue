@@ -158,7 +158,7 @@ export default {
   font-weight: 700;
 }
 .icon {
-  font-size: 1.25em;
+  font-size: 25px;
 }
 .details-filter-icon {
   padding: 0;
