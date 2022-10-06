@@ -25,7 +25,9 @@
           "
         >
           <h3 class="title-font">Welcome</h3>
+
           <Login />
+          <!-- <AccountForm /> -->
         </div>
         <!-- SECTION this section is to show which groups you are a part of -->
         <div class="col-10 col-md-4 order-2 order-md-1 mt-3">
